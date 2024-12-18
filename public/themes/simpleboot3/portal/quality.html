@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/create.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/create.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/innovate')}">Innovation & Manufacturing</a> /
+                Quality
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>QUALITY</i></div>
+            </div>
+
+            <div class="quality-content"
+                 style="background-image: url('{:cmf_get_image_url($quality_site[\'bg_image\'])}')">
+                <div class="quality-content-desc">
+                    {$quality_site.description}
+                </div>
+                <div class="quality-content-project">
+                    <ul class="clearfix">
+                        <foreach name="quality_site.engineering" item="vo">
+                            <li class="quality-content-project-item">
+                                <div class="quality-content-project-num">
+                                    {$vo.engineering_num}
+                                </div>
+                                <div class="quality-content-project-name">
+                                    {$vo.engineering_name}
+                                </div>
+                                <if condition="$key < count($quality_site['engineering'])-1">
+                                    <div class="quality-content-project-line"></div>
+                                </if>
+
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+                <div class="quality-content-pics clearfix">
+                    <div class="quality-content-pics-list">
+                        <ul>
+                            <foreach name="list" item="vo">
+                                <li class="quality-content-pics-item {$key==0 ? 'active' : ''}"
+                                    data-img="{:cmf_get_image_url($vo.more.thumbnail)}"
+                                    data-description="{$vo.post_excerpt}">
+                                    <span class="quality-content-pics-item-key">{$key<=8 ? '0' : ''}{$key+1}</span>
+                                    <span class="quality-content-pics-item-title">{$vo.post_title}</span>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                    <div class="quality-content-img">
+                        <img src="{:cmf_get_image_url($list[0]['more']['thumbnail'])}" alt="{$list[0]['post_title']}">
+                        <div class="quality-content-wrap">
+                            <div class="quality-content-img-title">{$list[0]['post_title']}</div>
+                            <div class="quality-content-img-desc">
+                                {$list[0]['post_excerpt']}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

@@ -1,116 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>联系我们</title>
-    <meta name="keywords" content="{$site_info.site_seo_keywords|default=''}"/>
-    <meta name="description" content="{$site_info.site_seo_description|default=''}">
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
     <include file="public@head"/>
-
-    <script src="//api.map.baidu.com/api?v=1.3"></script>
-
-    <style>
-        img {
-            max-width: none;
-        }
-    </style>
-    <hook name="before_head_end"/>
+    <link href="__TMPL__/public/assets/css/contact.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/contact.js"></script>
 </head>
-<body class="body-white">
-<include file="public@nav"/>
+<body>
+<div class="main">
+    <include file="public@nav"/>
 
-<div class="section slice no-padding">
-    <div id="mapCanvas" class="map-canvas no-margin" style="height: 450px;">
-        <php>
-            $company_location=empty($theme_vars['company_location'])?'121.449222,31.193348':$theme_vars['company_location'];
-            $company_location=explode(',',$company_location);
-            $company_location_lng=$company_location[0];
-            $company_location_lat=$company_location[1];
-        </php>
-        <script type="text/javascript">
-            var map   = new BMap.Map("mapCanvas"); // 创建Map实例
-            var point = new BMap.Point("{$company_location_lng}", "{$company_location_lat}"); // 创建点坐标
-            map.centerAndZoom(point, 15); // 初始化地图,设置中心点坐标和地图级别。
-            //map.enableScrollWheelZoom(); //启用滚轮放大缩小
-            //添加缩放控件
-            map.addControl(new BMap.NavigationControl());
-            map.addControl(new BMap.ScaleControl());
-            map.addControl(new BMap.OverviewMapControl());
+    <include file="public@banner"/>
 
-            var marker = new BMap.Marker(point); // 创建标注
-            map.addOverlay(marker); // 将标注添加到地图中
-            var infoWindow = new BMap.InfoWindow("{$theme_vars.baidu_map_info_window_text|htmlspecialchars_decode|default=''}"); // 创建信息窗口对象
-            marker.openInfoWindow(infoWindow);
-        </script>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <php>$guestbook=hook_one('guestbook');</php>
-            <if condition="empty($guestbook) && cmf_get_current_admin_id()">
-                <div style="border: 1px dashed #ddd;min-height: 300px;padding-top: 100px;">
-                    <div class="alert alert-warning" role="alert">
-                        此区域这为留言区，请安装留言插件！<br>
-                        <em>注：普通用户不会看到此提示！</em>
-                    </div>
-                </div>
-            </if>
-            {$guestbook}
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / Contact Us
+            </div>
         </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="section-title">联系方式</h3>
-                    <div class="contact-info">
-                        <h5>地址</h5>
-                        <p>{$theme_vars.address_cn|default=''}</p>
+        <div class="content-line"></div>
 
-                        <h5>邮箱</h5>
-                        <p>{$theme_vars.email|default=''}</p>
+        <div class="content">
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>CONTACT US</i></div>
+            </div>
 
-                        <h5>电话</h5>
-                        <p>{$theme_vars.phone_cn|default=''}</p>
+            <div class="contact-content clearfix">
+                <div class="contact-content-left">
+                    <div class="contact-content-left-company">{$site_info.site_name|default=''}</div>
+                    <div class="contact-content-left-text contact-content-left-email">
+                        <img src="__TMPL__/public/assets/images/email2.webp" alt="">
+                        <a href="mailto:{$site_info.email}"><p>{$site_info.email|default=''}</p></a>
+                    </div>
+                    <div class="contact-content-left-text contact-content-left-address">
+                        <img src="__TMPL__/public/assets/images/address.webp" alt="">
+                        <p>{$site_info.address|default=''}</p>
+                    </div>
+                    <div class="contact-content-left-text">
+                        <img src="__TMPL__/public/assets/images/web_site.webp" alt="">
+                        <a href="tel:{$site_info.sale_tel}"><p>{$site_info.web_site|default=''}</p></a>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Contact</h3>
-                    <div class="contact-info">
-                        <h5>Address</h5>
-                        <p>{$theme_vars.address_en|default=''}</p>
-
-                        <h5>Email</h5>
-                        <p>{$theme_vars.email|default=''}</p>
-
-                        <h5>Phone</h5>
-                        <p>{$theme_vars.phone_en|default=''}</p>
+                <div class="contact-content-right">
+                    <div class="contact-content-right-text contact-content-right-whatsapp">
+                        <span>Whatsapp</span>
+                        <php>
+                            $cleanNumber = preg_replace('/[^0-9]/', '', $site_info['whatsapp']);
+                            if (strpos($cleanNumber, '0') === 0) {
+                            $cleanNumber = preg_replace('/^0+/', '', $cleanNumber);
+                            }
+                        </php>
+                        <a href="https://api.whatsapp.com/send?phone={$cleanNumber}" target="_blank"><span>{$site_info.whatsapp|default=''}</span></a>
+                    </div>
+                    <div class="contact-content-right-line"></div>
+                    <div class="contact-content-right-text contact-content-right-telephone">
+                        <span>Cooperative telephone</span>
+                        <a href="tel:{$site_info.sale_tel}"><span>{$site_info.sale_tel|default=''}</span></a>
+                    </div>
+                    <div class="contact-content-right-service_time">
+                        <span>Service hours: Monday to Sunday 0:00-24:00</span>
                     </div>
                 </div>
             </div>
-            <php>
-                $company_qq=empty($theme_vars['qq'])?'':$theme_vars['qq'];
-                $company_qq=explode(',',$company_qq);
-            </php>
-            <notempty name="company_qq">
-                <h3 class="section-title">快捷交流</h3>
-                <p>点击以下QQ图标，免加好友即时洽谈合作</p>
-                <div class="social-media">
-                    <foreach name="company_qq" item="qq">
-                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$qq}&site=qq&menu=yes">
-                            <img border="0"
-                                 src="http://wpa.qq.com/pa?p=2:{$qq}:51"
-                                 alt="点击这里给我发消息"
-                                 title="点击这里给我发消息"/>
-                        </a>
-                    </foreach>
+
+            <div class="contact-message clearfix">
+                <div class="contact-message-left">
+                    <div class="contact-message-left-title">ONLINE MESSAGE</div>
+                    <div class="contact-message-left-text">You can submit and send in the product related matters</div>
+                    <div class="contact-message-left-line"></div>
+                    <div class="contact-message-left-contact">
+                        <span>Cooperative telephone</span>
+                        <a href="tel:{$site_info.sale_tel}"><span>{$site_info.sale_tel|default=''}</span></a>
+                    </div>
+                    <div class="contact-message-left-vertical-line"></div>
+                    <div class="contact-message-left-contact contact-message-left-email">
+                        <span>Email</span>
+                        <a href="mailto:{$site_info.email}"><span>{$site_info.email|default=''}</span></a>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div class="contact-message-left-line"></div>
                 </div>
-            </notempty>
+                <div class="contact-message-right">
+                    <input name="name" class="contact-message-right-name" type="text" placeholder="Name:">
+                    <input name="phone" class="contact-message-right-phone" type="text" placeholder="Phone / Whatsapp:">
+                    <input name="email" class="contact-message-right-email" type="text" placeholder="E-mail:">
+                    <textarea name="message" class="contact-message-right-message" placeholder="Message:"></textarea>
+                    <div class="contact-message-right-btn" onclick="submit()">Submit</div>
+                </div>
+            </div>
+
+            <!--google map-->
+            <div class="iframe-container-map">
+                {:htmlspecialchars_decode($site_info.map)}
+            </div>
+
+            <style>
+                .iframe-container-map {
+                    position: relative;
+                    width: 100%;
+                    padding-top: 35%;
+                }
+
+                .iframe-container-map iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+            </style>
         </div>
     </div>
-    <include file="public@footer"/>
-</div>
 
-<include file="public@scripts"/>
-<hook name="before_body_end"/>
+    <include file="public@foot"/>
+</div>
 </body>
 </html>

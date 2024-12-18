@@ -12,6 +12,7 @@ namespace app\portal\model;
 
 use app\admin\model\RouteModel;
 use think\Model;
+use think\model\concern\SoftDelete;
 use tree\Tree;
 use think\db\Query;
 
@@ -26,6 +27,10 @@ class PortalCategoryModel extends Model
     protected $type = [
         'more' => 'array',
     ];
+
+    use SoftDelete;
+    protected $deleteTime = 'delete_time';
+    protected $defaultSoftDelete = 0;
 
     public function getArticleTotalCountAttr($value, $data)
     {
@@ -42,10 +47,11 @@ class PortalCategoryModel extends Model
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function adminCategoryTree($selectId = 0, $currentCid = 0)
+    public function adminCategoryTree($type = 1, $selectId = 0, $currentCid = 0)
     {
         $categories = $this->order("list_order ASC")
             ->where('delete_time', 0)
+            ->where('type',$type)
             ->where(function (Query $query) use ($currentCid) {
                 if (!empty($currentCid)) {
                     $query->where('id', '<>', $currentCid);
@@ -71,12 +77,12 @@ class PortalCategoryModel extends Model
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function adminCategoryTableTree($currentIds = 0, $tpl = '')
+    public function adminCategoryTableTree($type = 1, $currentIds = 0, $tpl = '')
     {
 //        if (!empty($currentCid)) {
 //            $where['id'] = ['neq', $currentCid];
 //        }
-        $categories = $this->order("list_order ASC")->where('delete_time', 0)->select()->toArray();
+        $categories = $this->order("list_order ASC")->where('delete_time', 0)->where('type',$type)->select()->toArray();
 
         $tree       = new Tree();
         $tree->icon = ['&nbsp;&nbsp;│', '&nbsp;&nbsp;├─', '&nbsp;&nbsp;└─'];
@@ -93,15 +99,33 @@ class PortalCategoryModel extends Model
             $item['status_text']    = empty($item['status']) ? '<span class="label label-warning">隐藏</span>' : '<span class="label label-success">显示</span>';
             $item['checked']        = in_array($item['id'], $currentIds) ? "checked" : "";
             $item['url']            = cmf_url('portal/List/index', ['id' => $item['id']]);
-            $item['str_action']     = '<a class="btn btn-xs btn-primary" href="' . url("AdminCategory/add", ["parent" => $item['id']]) . '">添加子分类</a>  <a class="btn btn-xs btn-primary" href="' . url("AdminCategory/edit", ["id" => $item['id']]) . '">' . lang('EDIT') . '</a>  <a class="btn btn-xs btn-danger js-ajax-delete" href="' . url("AdminCategory/delete", ["id" => $item['id']]) . '">' . lang('DELETE') . '</a> ';
-            if ($item['status']) {
-                $item['str_action'] .= '<a class="btn btn-xs btn-warning js-ajax-dialog-btn" data-msg="您确定隐藏此分类吗" href="' . url('AdminCategory/toggle', ['ids' => $item['id'], 'hide' => 1]) . '">隐藏</a>';
-            } else {
-                $item['str_action'] .= '<a class="btn btn-xs btn-success js-ajax-dialog-btn" data-msg="您确定显示此分类吗" href="' . url('AdminCategory/toggle', ['ids' => $item['id'], 'display' => 1]) . '">显示</a>';
+            switch ($type){
+                case 1:
+                    $controllerName = "AdminProductCategory";
+                    break;
+                case 3:
+                    $controllerName = "AdminCaseCategory";
+                    break;
+                case 4:
+                    $controllerName = "AdminServiceCategory";
+                    break;
+                case 5:
+                    $controllerName = "AdminVideoCategory";
+                    break;
+                case 6:
+                    $controllerName = "AdminFileCategory";
+                    break;
+                case 7:
+                    $controllerName = "AdminAboutCategory";
+                    break;
+                case 2:
+                default:
+                    $controllerName = "AdminCategory";
+                    break;
             }
-            if ($item['description']) {
-                $item['description'] = '<span title=' . $item['description'] . '>' . mb_substr($item['description'], 0, 50) . "…</span>";
-            }
+
+            $item['str_action']     = '<a class="btn btn-xs btn-primary" href="' . url($controllerName . "/add", ["parent" => $item['id']]) . '">添加子分类</a>  <a class="btn btn-xs btn-primary" href="' . url($controllerName."/edit", ["id" => $item['id']]) . '">' . lang('EDIT') . '</a>  <a class="btn btn-xs btn-danger js-ajax-delete" href="' . url($controllerName."/delete", ["id" => $item['id']]) . '">' . lang('DELETE') . '</a> ';
+
             array_push($newCategories, $item);
         }
 
@@ -109,12 +133,9 @@ class PortalCategoryModel extends Model
 
         if (empty($tpl)) {
             $tpl = " <tr id='node-\$id' \$parent_id_node style='\$style' data-parent_id='\$parent_id' data-id='\$id' title='ID:\$id'>
-                        <td style='padding-left:20px;'><input type='checkbox' class='js-check' data-yid='js-check-y' data-xid='js-check-x' name='ids[]' value='\$id' data-parent_id='\$parent_id' data-id='\$id'></td>
-                        <td><input name='list_orders[\$id]' type='text' size='3' value='\$list_order' class='input-order'></td>
+                        
                         <td>\$id</td>
-                        <td>\$spacer <a href='\$url' target='_blank'>\$name</a></td>
-                        <td>\$description</td>
-                        <td>\$status_text</td>
+                        <td>\$spacer \$name</td>
                         <td>\$str_action</td>
                     </tr>";
         }
@@ -152,15 +173,15 @@ class PortalCategoryModel extends Model
             $result = false;
         }
 
-        if ($result != false) {
-            //设置别名
-            $routeModel = new RouteModel();
-            if (!empty($data['alias']) && !empty($id)) {
-                $routeModel->setRoute($data['alias'], 'portal/List/index', ['id' => $id], 2, 5000);
-                $routeModel->setRoute($data['alias'] . '/:id', 'portal/Article/index', ['cid' => $id], 2, 4999);
-            }
-            $routeModel->getRoutes(true);
-        }
+//        if ($result != false) {
+//            //设置别名
+//            $routeModel = new RouteModel();
+//            if (!empty($data['alias']) && !empty($id)) {
+//                $routeModel->setRoute($data['alias'], 'portal/List/index', ['id' => $id], 2, 5000);
+//                $routeModel->setRoute($data['alias'] . '/:id', 'portal/Article/index', ['cid' => $id], 2, 4999);
+//            }
+//            $routeModel->getRoutes(true);
+//        }
 
         return $result;
     }
@@ -170,6 +191,12 @@ class PortalCategoryModel extends Model
         $result = true;
 
         $id          = intval($data['id']);
+        if (empty($data['parent_id'])){
+            $data['parent_id'] = 0;
+        }
+        if (empty($data['alias'])){
+            $data['alias'] = '';
+        }
         $parentId    = intval($data['parent_id']);
         $oldCategory = $this->where('id', $id)->find();
 
@@ -205,16 +232,16 @@ class PortalCategoryModel extends Model
                 }
             }
 
-            $routeModel = new RouteModel();
-            if (!empty($categoryAlias)) {
-                $routeModel->setRoute($categoryAlias, 'portal/List/index', ['id' => $data['id']], 2, 5000);
-                $routeModel->setRoute($categoryAlias . '/:id', 'portal/Article/index', ['cid' => $data['id']], 2, 4999);
-            } else {
-                $routeModel->deleteRoute('portal/List/index', ['id' => $data['id']]);
-                $routeModel->deleteRoute('portal/Article/index', ['cid' => $data['id']]);
-            }
+//            $routeModel = new RouteModel();
+//            if (!empty($categoryAlias)) {
+//                $routeModel->setRoute($categoryAlias, 'portal/List/index', ['id' => $data['id']], 2, 5000);
+//                $routeModel->setRoute($categoryAlias . '/:id', 'portal/Article/index', ['cid' => $data['id']], 2, 4999);
+//            } else {
+//                $routeModel->deleteRoute('portal/List/index', ['id' => $data['id']]);
+//                $routeModel->deleteRoute('portal/Article/index', ['cid' => $data['id']]);
+//            }
 
-            $routeModel->getRoutes(true);
+//            $routeModel->getRoutes(true);
         }
 
 

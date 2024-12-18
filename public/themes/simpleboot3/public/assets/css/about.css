@@ -1,0 +1,196 @@
+.introduction-description {
+    width: 1434px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    margin: 60px auto 40px;
+}
+
+.introduction-img-left {
+    width: 873px;
+    height: 314px;
+    float: left;
+}
+
+.introduction-img-right {
+    width: 547px;
+    height: 314px;
+    float: right;
+}
+
+.introduction-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.globally-content {
+    width: 1437px;
+    height: 525px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    margin-top: -56px;
+}
+
+.globally-content .globally-content-top {
+    height: 175px;
+    padding-top: 116px;
+}
+
+.globally-content .globally-content-top .globally-content-desc {
+    width: 997px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+    padding: 18px 0;
+}
+
+.globally-content .globally-content-top .globally-content-line {
+    width: 1px;
+    height: 175px;
+    background: #DCDCDC;
+    float: left;
+    margin-left: 60px;
+}
+
+.globally-content .globally-content-top .globally-content-title {
+    width: 298px;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 26px;
+    color: #333333;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+    margin-left: 58px;
+    margin-top: 50px;
+}
+
+.globally-content .introduction-list {
+    margin-top: 40px;
+}
+
+.globally-content .introduction-list .introduction-list-item {
+    width: 310px;
+    height: 92px;
+    float: left;
+    border-right: 1px solid #DCDCDC;
+    margin: 16px 50px;
+    position: relative;
+}
+
+.globally-content .introduction-list .introduction-list-item:last-child {
+    width: 200px;
+    margin-right: 0;
+    border: none;
+}
+
+.globally-content .introduction-list .introduction-list-item:first-child {
+    margin-left: 0;
+}
+
+.globally-content .introduction-list .introduction-list-item .introduction-list-item-img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 13px;
+    left: 0;
+}
+
+.globally-content .introduction-list .introduction-list-item .introduction-list-item-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.globally-content .introduction-list .introduction-list-item .introduction-list-item-num {
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 46px;
+    color: #333333;
+    line-height: 56px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    position: absolute;
+    left: 46px;
+}
+
+.globally-content .introduction-list .introduction-list-item .introduction-list-item-name {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    color: #999999;
+    line-height: 24px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    position: absolute;;
+    left: 46px;
+    top: 68px
+}
+
+
+.corporate-image-list .corporate-image-item {
+    width: 705px;
+    height: 492px;
+    float: left;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.corporate-image-list .corporate-image-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.corporate-image-list .corporate-image-item .corporate-image-item-img {
+    width: 705px;
+    height: 430px;
+    overflow: hidden;
+}
+
+.corporate-image-list .corporate-image-item .corporate-image-item-img img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.corporate-image-list .corporate-image-item .corporate-image-item-title {
+    width: 705px;
+    height: 62px;
+    background: #FFFFFF;
+    border: 1px solid #8E8E8E;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333333;
+    line-height: 62px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.corporate-image-list .corporate-image-item:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.corporate-image-list .corporate-image-item:hover .corporate-image-item-img img {
+    transform: scale(1.1);
+}
+
+.corporate-image-list .corporate-image-item:hover .corporate-image-item-title {
+    border: 1px solid #1562C5;
+    background-color: #1562C5;
+    color: #FFFFFF;
+}

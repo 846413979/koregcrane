@@ -1,0 +1,116 @@
+<include file="public@header"/>
+<style type="text/css">
+    .pic-list li {
+        margin-bottom: 5px;
+    }
+
+    .btn-cancel-thumbnail {
+        margin-top: 5px;
+    }
+
+    #photos, #files {
+        margin-bottom: 0;
+    }
+</style>
+<script type="text/html" id="company-item-tpl">
+    <li id="saved-company{id}">
+        <input id="company-{id}" type="hidden" name="company_urls[]" value="{filepath}">
+        <input class="form-control" id="company-{id}-name" type="text" name="company_names[]" value="{name}"
+               style="width: 400px;" title="图片名称">
+        <img id="company-{id}-preview" src="{url}" style="height:34px;width: 44px;"
+             onclick="imagePreviewDialog(this.src);">
+        <a class="btn btn-default" href="javascript:uploadOneImage('图片上传','#company-{id}');"><i class="fa fa-upload fa-fw"></i></a>
+        <a class="btn btn-danger" href="javascript:(function(){$('#saved-company{id}').remove();})();"><i class="fa fa-trash fa-fw"></i></a>
+        <a class="btn btn-success" href="javascript:(function(){$('#saved-company{id}').before($('#saved-company{id}').next());})();"><i class="fa fa-arrow-down fa-fw"></i></a>
+    </li>
+</script>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab">创新设置</a></li>
+        <li><a href="{:url('portal/AdminInnovate/index')}">创新图文列表</a></li>
+    </ul>
+    <form class="form-horizontal js-ajax-form margin-top-20" role="form" action="{:url('Innovate/sitePost')}"
+          method="post">
+        <div class="tabbable">
+            <div class="tab-content">
+                <div class="form-group">
+                    <label for="input-description" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>创新描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-description" name="description" style="height: 100px;"
+                                  placeholder="请填写描述">{$site_info.description|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">创新背景图</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="bg_image" id="bg_image"
+                               value="{$site_info.bg_image|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#bg_image');">
+                            <if condition="empty($site_info.bg_image)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="bg_image-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.bg_image)}"
+                                     id="bg_image-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm" onclick="$('#bg_image-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#bg_image').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：1440*527</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        工程设置
+                    </label>
+                    <div class="col-md-8 col-sm-10">
+                        <ul id="engineering" class="pic-list list-unstyled form-inline">
+                            <notempty name="site_info.engineering">
+                                <foreach name="site_info.engineering" item="vo">
+                                    <li id="saved-engineering{$key}">
+                                        工程名称：<input class="form-control" type="text"
+                                               name="engineering_name[]"
+                                               value="{$vo.engineering_name|default=''}" style="width: 300px;">
+                                        &nbsp;&nbsp;&nbsp;
+                                        项目数量：<input class="form-control" type="number"
+                                                        name="engineering_num[]"
+                                                        value="{$vo.engineering_num|default=''}" style="width: 100px;" >
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" href="javascript:(function(){$('#saved-engineering{$key}').remove();})();"><i class="fa fa-trash fa-fw"></i></a>
+                                    </li>
+                                </foreach>
+                            </notempty>
+                        </ul>
+                        <a href="javascript:engineering_add();" class="btn btn-default">添加工程</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary js-ajax-submit" data-refresh="0">
+                            {:lang('SAVE')}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript" src="__STATIC__/js/admin.js?v={$_static_version}"></script>
+<script type="text/javascript">
+    function engineering_add() {
+        var timestamp = new Date().getTime();
+        var randomNum = Math.random();
+        var scaledRandomNum = Math.floor(randomNum * 1000);
+        var id = timestamp.toString() + scaledRandomNum.toString();
+        $('#engineering').append('<li id="saved-engineering'+id+'">工程名称：<input class="form-control" type="text" name="engineering_name[]" value="" style="width: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目数量：<input class="form-control" type="number" name="engineering_num[]" value="" style="width: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="javascript:(function(){$(\'#saved-engineering'+id+'\').remove();})();"><i class="fa fa-trash fa-fw"></i></a></li>');
+    }
+</script>
+</body>
+</html>

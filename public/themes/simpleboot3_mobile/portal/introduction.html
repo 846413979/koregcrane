@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/about.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/about.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/introduction')}">About us</a> /
+                Company introduction
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title">Who We Are?</div>
+
+            <div class="introduction-description">
+                {$about_site.introduction}
+            </div>
+
+            <div class="introduction-img introduction-img-left">
+                <img src="{:cmf_get_image_url($about_site.left_image)}" alt="$site_info.site_name">
+            </div>
+
+            <div class="globally-content-desc">{$about_site.description}</div>
+
+            <div class="introduction-img introduction-img-right">
+                <img src="{:cmf_get_image_url($about_site.right_image)}" alt="$site_info.site_name">
+            </div>
+
+            <div class="introduction-list clearfix">
+                <ul>
+                    <foreach name="about_site.engineering" item="vo">
+                        <li class="introduction-list-item">
+                            <div class="introduction-list-item-img">
+                                <img src="{:cmf_get_image_url($vo.engineering_image)}" alt="{$vo.engineering_name}">
+                            </div>
+                            <div class="introduction-list-item-num">{$vo.engineering_num}</div>
+                            <div class="introduction-list-item-name">{$vo.engineering_name}</div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <include file="public@foot"/>
+
+</div>
+</body>
+</html>

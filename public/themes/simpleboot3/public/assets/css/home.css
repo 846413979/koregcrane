@@ -1,0 +1,307 @@
+.hot-product {
+    width: 100%;
+    background-color: #fff;
+
+}
+
+.hot-product .product-title {
+    width: 1440px;
+    margin: 80px auto 60px;
+}
+
+.hot-product .product-title .product-title-line {
+    width: 340px;
+    height: 1px;
+    background: #8E8E8E;
+    float: left;
+    margin-top: 25px;
+}
+
+.hot-product .product-title .product-title-text {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 42px;
+    color: #333333;
+    line-height: 51px;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+    margin: 0 50px;
+}
+
+.product-content {
+    width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.product-content ul {
+    width: 500%;
+}
+
+.product-content ul li {
+    width: 350px;
+    height: 437px;
+    float: left;
+    margin-left: 10px;
+}
+
+.product-content ul li:first-child {
+    margin-left: 0;
+}
+
+.product-content ul li .product-content-li-img {
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.product-content ul li .product-content-li-img img {
+    width: 350px;
+    height: 350px;
+    transition: all 0.3s;
+}
+
+.product-content ul li:hover .product-content-li-img img {
+    transform: scale(1.1);
+}
+
+.product-content ul li .product-content-li-title {
+    width: 350px;
+    height: 87px;
+    padding: 20px;
+    border: 1px solid #f1f1f1;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 24px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.product-content ul li:hover .product-content-li-title {
+    background: #1562C5;
+    color: #FFFFFF;
+    border-color: #1562C5;
+}
+
+.product-line {
+    height: 4px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.product-line ul li {
+    width: 24px;
+    height: 4px;
+    background: #DCDCDC;
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.product-line ul li:first-child {
+    margin-left: 0;
+}
+
+.product-line ul li.active {
+    height: 6px;
+    margin-top: -2px;
+    background: #1562C5;
+}
+
+.innovation {
+    width: 100%;
+    height: 658px;
+    position: relative;
+}
+
+.innovation .innovation-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.innovation .innovation-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.innovation .innovation-list {
+    width: 33.3%;
+    height: 100%;
+    float: left;
+    position: relative;
+    z-index: 1;
+    padding: 120px 60px;
+    border-right: #FFFFFF 1px solid;
+    cursor: pointer;
+}
+
+.innovation .innovation-list:last-child {
+    border: none;
+}
+
+.innovation .innovation-list .innovation-list-title {
+    font-family: Roboto, Roboto;
+    font-weight: normal;
+    font-size: 42px;
+    color: #FFFFFF;
+    line-height: 51px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.innovation .innovation-list .innovation-list-desc {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FEFEFE;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 60px;
+}
+
+.innovation .innovation-list .innovation-list-more {
+    width: 193px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #FFFFFF;
+    padding: 14px 20px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    position: absolute;
+    bottom: 100px;
+}
+
+.innovation .innovation-list .innovation-list-more i {
+    margin-left: 10px;
+}
+
+.innovation .innovation-list:hover {
+    background-color: rgba(21, 98, 197, 0.6);
+}
+
+.choose {
+    width: 100%;
+    height: 767px;
+    background: #F3F2F9;
+    padding-top: 80px;
+}
+
+.choose .choose-title {
+    width: 1440px;
+    margin: 0 auto 60px;
+}
+
+.choose .choose-title .choose-title-line {
+    width: 480px;
+    height: 1px;
+    background: #8E8E8E;
+    float: left;
+    margin-top: 25px;
+}
+
+.choose .choose-title .choose-title-text {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 42px;
+    color: #333333;
+    line-height: 51px;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+    margin: 0 50px;
+}
+
+.choose .choose-content {
+    width: 1440px;
+    margin: 80px auto;
+}
+
+.choose .choose-content .choose-content-left {
+    width: 714px;
+    height: 482px;
+    background: #FFFFFF;
+    padding: 40px;
+    float: left;
+}
+
+.choose .choose-content .choose-content-left .choose-left-title {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 36px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.choose .choose-content .choose-content-left .choose-left-content {
+    margin-top: 30px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+    line-height: 36px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.choose .choose-content .choose-content-right {
+    width: 726px;
+    float: left;
+}
+
+.choose .choose-content .choose-content-right ul li {
+    width: 351px;
+    height: 235px;
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.choose .choose-content .choose-content-right ul li img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+.choose .choose-content .choose-content-right ul li:hover img {
+    transform: scale(1.1);
+}
+
+.choose .choose-content .choose-content-right ul li .choose-right-title {
+    width: 351px;
+    height: 39px;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 39px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    padding-left: 12px;
+    position: absolute;
+    bottom: 0;
+}

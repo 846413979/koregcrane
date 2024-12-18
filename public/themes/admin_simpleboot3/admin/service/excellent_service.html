@@ -1,0 +1,187 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab">优质服务</a></li>
+    </ul>
+    <form class="form-horizontal js-ajax-form margin-top-20" role="form" action="{:url('Service/serviceSitePost')}"
+          method="post">
+        <div class="tabbable">
+            <div class="tab-content">
+                第一部分
+                <div class="form-group">
+                    <label for="input-title1" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>标题</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" id="input-title1" name="title1" placeholder="请填写标题"
+                               value="{$site_info.title1|default=''}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-content1" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-content1" name="content1" style="height: 100px;"
+                                  required
+                                  placeholder="请填写描述">{$site_info.content1|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">图片</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="image1" id="image1"
+                               value="{$site_info.image1|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#image1');">
+                            <if condition="empty($site_info.image1)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="image1-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.image1)}"
+                                     id="image1-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm"
+                               onclick="$('#image1-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#image1').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：690*458</p>
+                    </div>
+                </div>
+                第二部分
+                <div class="form-group">
+                    <label for="input-title2" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>标题</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" id="input-title2" name="title2" placeholder="请填写标题"
+                               value="{$site_info.title2|default=''}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-content2" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-content2" name="content2" style="height: 100px;"
+                                  required
+                                  placeholder="请填写描述">{$site_info.content2|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">图片</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="image2" id="image2"
+                               value="{$site_info.image2|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#image2');">
+                            <if condition="empty($site_info.image2)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="image2-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.image2)}"
+                                     id="image2-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm"
+                               onclick="$('#image2-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#image2').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：690*458</p>
+                    </div>
+                </div>
+                第三部分
+                <div class="form-group">
+                    <label for="input-title3" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>标题</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" id="input-title3" name="title3" placeholder="请填写标题"
+                               value="{$site_info.title3|default=''}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-content3" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-content3" name="content3" style="height: 100px;"
+                                  required
+                                  placeholder="请填写描述">{$site_info.content3|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">图片</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="image3" id="image3"
+                               value="{$site_info.image3|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#image3');">
+                            <if condition="empty($site_info.image3)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="image3-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.image3)}"
+                                     id="image3-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm"
+                               onclick="$('#image3-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#image3').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：690*458</p>
+                    </div>
+                </div>
+                第四部分
+                <div class="form-group">
+                    <label for="input-title4" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>标题</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input class="form-control" id="input-title4" name="title4" placeholder="请填写标题"
+                               value="{$site_info.title4|default=''}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-content4" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-content4" name="content4" style="height: 100px;"
+                                  required
+                                  placeholder="请填写描述">{$site_info.content4|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">图片</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="image4" id="image4"
+                               value="{$site_info.image4|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#image4');">
+                            <if condition="empty($site_info.image4)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="image4-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.image4)}"
+                                     id="image4-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm"
+                               onclick="$('#image4-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#image4').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：690*458</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary js-ajax-submit" data-refresh="0">
+                            {:lang('SAVE')}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript" src="__STATIC__/js/admin.js?v={$_static_version}"></script>
+</body>
+</html>

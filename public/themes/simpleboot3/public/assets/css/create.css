@@ -1,0 +1,667 @@
+.innovate-content {
+    height: 560px;
+}
+
+.innovate-content .innovate-content-img {
+    width: 720px;
+    height: 560px;
+    float: left;
+}
+
+.innovate-content .innovate-content-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.innovate-content .innovate-content-list {
+    width: 720px;
+    height: 560px;
+    background-color: #F3F2F9;
+    float: left;
+    overflow-y: scroll;
+}
+
+.innovate-content .innovate-content-list ul {
+    padding: 0 40px;
+}
+
+.innovate-content .innovate-content-list .innovate-content-item {
+    margin: 20px 0;
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.innovate-content .innovate-content-list .innovate-content-item .innovate-content-item-btn {
+    width: 20px;
+    height: 20px;
+    background: #D5E7FF;
+    float: left;
+    color: #1562C5;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.innovate-content .innovate-content-list .innovate-content-item .innovate-content-item-title {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.innovate-content .innovate-content-list .innovate-content-item .innovate-content-item-text {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.innovate-content .innovate-content-list .innovate-content-item.active .innovate-content-item-text {
+    display: block;
+}
+
+
+/* 整个滚动条容器 */
+.innovate-content-list::-webkit-scrollbar {
+    width: 2px; /* 滚动条的宽度 */
+    height: 0; /* 垂直滚动条的高度 */
+}
+
+/* 滚动条轨道 */
+.innovate-content-list::-webkit-scrollbar-track {
+    background: #8E8E8E; /* 轨道的颜色 */
+}
+
+/* 滚动条滑块 */
+.innovate-content-list::-webkit-scrollbar-thumb {
+    background: #1562C5; /* 滑块的颜色 */
+    border-radius: 0; /* 滑块的圆角 */
+}
+
+/* 滑块在悬停时的样式 */
+.innovate-content-list::-webkit-scrollbar-thumb:hover {
+    background: #1562C5; /* 悬停时滑块的颜色 */
+}
+
+/* 滚动条两端的按钮 */
+.innovate-content-list::-webkit-scrollbar-button {
+    background: #1562C5; /* 按钮的颜色 */
+    height: 0; /* 按钮的高度（适用于垂直滚动条） */
+    width: 0; /* 按钮的宽度（适用于水平滚动条） */
+}
+
+/* 滚动条两端的角落 */
+.innovate-content-list::-webkit-scrollbar-corner {
+    background: #8E8E8E; /* 角落的颜色 */
+}
+
+
+.innovate-project {
+    height: 731px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.innovate-project .innovate-project-title {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 30px;
+    color: #333333;
+    text-align: center;
+    font-style: italic;
+    text-transform: none;
+    padding-top: 80px;
+}
+
+.innovate-project .innovate-project-content {
+    margin-top: 40px;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item {
+    width: 345px;
+    height: 195px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.16);
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item:last-child {
+    margin-right: 0;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item:first-child {
+    margin-left: 180px;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item .innovate-project-content-item-num {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333333;
+    line-height: 120px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 25px;
+    height: 90px;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item .innovate-project-content-item-num span {
+    font-weight: bold;
+    font-size: 74px;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item .innovate-project-content-item-name {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #999999;
+    line-height: 24px;
+    text-align: center;
+    font-style: normal;
+    margin-top: 10px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    padding: 0 20px;
+}
+
+.innovate-project .innovate-project-content .innovate-project-content-item:hover .innovate-project-content-item-num {
+    color: #1562C5;
+}
+
+
+/* 智造 */
+.intelligent-content {
+
+}
+
+.intelligent-title {
+    margin-left: 54px;
+}
+
+.intelligent-content .intelligent-title .intelligent-title-item {
+    width: 404px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 30px 30px 30px 30px;
+    border: 1px solid #DCDCDC;
+    float: left;
+    margin-right: 60px;
+    cursor: pointer;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333333;
+    line-height: 60px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.intelligent-content .intelligent-title .intelligent-title-item:last-child {
+    margin-right: 0;
+}
+
+.intelligent-content .intelligent-title .intelligent-title-item.active {
+    color: #FFFFFF;
+    background: #1562C5;
+}
+
+.intelligent-content .intelligent-content-list {
+    margin-top: 40px;
+    display: none;
+}
+
+.intelligent-content .intelligent-content-list.active {
+    display: block;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item {
+    width: 705px;
+    height: 492px;
+    float: left;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item .intelligent-content-item-img {
+    width: 705px;
+    height: 430px;
+    overflow: hidden;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item .intelligent-content-item-img img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item .intelligent-content-item-title {
+    width: 705px;
+    height: 62px;
+    background: #FFFFFF;
+    border: 1px solid #8E8E8E;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333333;
+    line-height: 62px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item:hover .intelligent-content-item-img img {
+    transform: scale(1.1);
+}
+
+.intelligent-content .intelligent-content-list .intelligent-content-item:hover .intelligent-content-item-title {
+    border: 1px solid #1562C5;
+    background-color: #1562C5;
+    color: #FFFFFF;
+}
+
+
+.ingenuity-desc {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 60px;
+}
+
+.ingenuity-list {
+    margin-top: 60px;
+}
+
+.ingenuity-list .ingenuity-img {
+    width: 900px;
+    height: 678px;
+    float: left;
+}
+
+.ingenuity-list .ingenuity-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.ingenuity-list .ingenuity-list-content {
+    width: 540px;
+    height: 678px;
+    background: #1562C5;
+    float: left;
+    position: relative;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-item {
+    width: 540px;
+    height: 678px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-item.active {
+    display: block;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-item .ingenuity-title {
+    font-family: Roboto, Roboto;
+    font-weight: normal;
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 29px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 133px;
+    padding: 0 40px;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-item .ingenuity-text {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FEFEFE;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 40px;
+    padding: 0 40px;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-list-line {
+    position: absolute;
+    top: 522px;
+    left: 50px;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-list-line .ingenuity-list-line-item {
+    width: 24px;
+    height: 4px;
+    background: #FFFFFF;
+    opacity: 0.6;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-list-line .ingenuity-list-line-item.active {
+    height: 6px;
+    opacity: 1;
+    margin-top: -2px;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-list-line .ingenuity-list-line-item .ingenuity-list-line-item-text {
+    width: 24px;
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 17px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    position: absolute;
+    bottom: 10px;
+    display: none;
+}
+
+.ingenuity-list .ingenuity-list-content .ingenuity-list-line .ingenuity-list-line-item.active .ingenuity-list-line-item-text {
+    display: block;
+}
+
+
+.ingenuity-category {
+    width: 100%;
+    margin-top: 80px;
+}
+
+.ingenuity-category .ingenuity-category-item {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 24px;
+    color: #333333;
+    line-height: 80px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    width: 288px;
+    height: 80px;
+    float: left;
+    background-color: #F8F8F8;
+    cursor: pointer;
+}
+
+.ingenuity-category .ingenuity-category-item.active {
+    color: #FFFFFF;
+    background-color: #1562C5;
+}
+
+.ingenuity-category-list {
+    display: none;
+}
+
+.ingenuity-category-list.active {
+    display: block;
+}
+
+.ingenuity-category-list .ingenuity-category-desc {
+    margin: 40px 0;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item {
+    width: 705px;
+    height: 492px;
+    float: left;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item .ingenuity-category-list-item-img {
+    width: 705px;
+    height: 430px;
+    overflow: hidden;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item .ingenuity-category-list-item-img img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item .ingenuity-category-list-item-title {
+    width: 705px;
+    height: 62px;
+    background: #FFFFFF;
+    border: 1px solid #8E8E8E;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333333;
+    line-height: 62px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.ingenuity-category-list .ingenuity-category-list-item:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ingenuity-category-list .ingenuity-category-list-item:hover .ingenuity-category-list-item-img img {
+    transform: scale(1.1);
+}
+
+.ingenuity-category-list .ingenuity-category-list-item:hover .ingenuity-category-list-item-title {
+    border: 1px solid #1562C5;
+    background-color: #1562C5;
+    color: #FFFFFF;
+}
+
+
+.quality-content {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.quality-content .quality-content-desc {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.quality-content .quality-content-project {
+    margin-top: 60px;
+}
+
+.quality-content .quality-content-project .quality-content-project-item {
+    width: 360px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+}
+
+.quality-content .quality-content-project .quality-content-project-item .quality-content-project-num {
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 46px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.quality-content .quality-content-project .quality-content-project-item .quality-content-project-name {
+    height: 120px;
+    font-family: Trade Gothic Next LT Pro, Trade Gothic Next LT Pro;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    display: grid;
+    place-items: center;
+    margin-top: 20px;
+    padding: 0 40px;
+}
+
+.quality-content .quality-content-project .quality-content-project-item .quality-content-project-line {
+    width: 1px;
+    height: 60px;
+    background: #DCDCDC;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.quality-content .quality-content-project .quality-content-project-item:hover .quality-content-project-num {
+    color: #1562C5;
+}
+
+.quality-content-pics {
+    margin: 80px 0;
+}
+
+.quality-content-pics .quality-content-pics-list {
+    width: 479px;
+    height: 678px;
+    background: #F3F2F9;
+    float: left;
+}
+
+.quality-content-pics .quality-content-pics-list .quality-content-pics-item {
+    width: 100%;
+    height: 97px;
+    font-family: Roboto, Roboto;
+    font-size: 20px;
+    color: #333333;
+    line-height: 96px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    border-bottom: 1px solid #DCDCDC;
+    cursor: pointer;
+}
+
+.quality-content-pics .quality-content-pics-list .quality-content-pics-item:last-child {
+    border: none;
+}
+
+.quality-content-pics .quality-content-pics-list .quality-content-pics-item.active {
+    font-weight: bold;
+    color: #1562C5;
+}
+
+.quality-content-pics .quality-content-pics-list .quality-content-pics-item .quality-content-pics-item-key {
+    margin-left: 30px;
+}
+
+.quality-content-pics .quality-content-pics-list .quality-content-pics-item .quality-content-pics-item-title {
+    margin-left: 20px;
+}
+
+.quality-content-pics .quality-content-img {
+    width: 961px;
+    height: 678px;
+    float: left;
+    position: relative;
+}
+
+.quality-content-pics .quality-content-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.quality-content-pics .quality-content-img .quality-content-wrap {
+    width: 100%;
+    height: 249px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+    position: absolute;
+    bottom: 0;
+}
+
+.quality-content-pics .quality-content-img .quality-content-img-title {
+    position: absolute;
+    top: 41px;
+    left: 30px;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-align: left;
+    font-style: italic;
+    text-transform: none;
+}
+
+.quality-content-pics .quality-content-img .quality-content-img-desc {
+    width: 900px;
+    position: absolute;
+    top: 90px;
+    left: 30px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FEFEFE;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}

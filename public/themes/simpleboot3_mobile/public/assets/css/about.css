@@ -1,0 +1,95 @@
+.content{
+    width: 35rem;
+    margin: 2rem auto;
+}
+.introduction-description{
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #333333;
+    line-height: 2rem;
+    margin: 1rem 0;
+}
+
+.introduction-img-left{
+    width: 35rem;
+}
+.introduction-img-right{
+    width: 35rem;
+}
+.introduction-img img{
+    width: 100%;
+    height: 100%;
+}
+.globally-content-desc{
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #333333;
+    line-height: 2rem;
+    text-align: left;
+    padding: 1rem 0;
+}
+.introduction-list{
+    margin-top: 2rem;
+}
+
+.introduction-list .introduction-list-item{
+    width: 17rem;
+    float: left;
+    border-right: 1px solid #DCDCDC;
+    position: relative;
+    margin-right: 1rem;
+    margin-bottom: 4rem;
+    padding-left: 1rem;
+}
+.introduction-list .introduction-list-item:nth-child(2n){
+    margin-right: 0;
+    border: none;
+}
+.introduction-list .introduction-list-item .introduction-list-item-img{
+    width: 3rem;
+    height: 3rem;
+    float: left;
+}
+.introduction-list .introduction-list-item .introduction-list-item-img img{
+    width: 100%;
+    height: 100%;
+}
+.introduction-list .introduction-list-item .introduction-list-item-num{
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 3rem;
+    color: #333333;
+    line-height: 3rem;
+    margin-left: 5rem;
+}
+.introduction-list .introduction-list-item .introduction-list-item-name{
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #999999;
+    line-height: 2rem;
+}
+
+
+.corporate-image-list .corporate-image-item{
+    margin-bottom: 3rem;
+}
+.corporate-image-list .corporate-image-item .corporate-image-item-img {
+    width: 35rem;
+    overflow: hidden;
+}
+.corporate-image-list .corporate-image-item .corporate-image-item-img img {
+    width: 100%;
+}
+.corporate-image-list .corporate-image-item .corporate-image-item-title {
+    width: 35rem;
+    background: #FFFFFF;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #333333;
+    line-height: 3rem;
+    text-align: center;
+}

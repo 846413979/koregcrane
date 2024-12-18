@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/services.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/international')}">Services</a> / Global Markets
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>INTERNATIONALIZATION</i></div>
+            </div>
+            <div class="content-text">
+                {$service_site.internationalization}
+            </div>
+            <div class="content-img">
+                <img src="{:cmf_get_image_url($service_site.internationalization_image)}"
+                     alt="internationalization_image">
+            </div>
+
+            <div class="market-container">
+                <ul class="market-list clearfix">
+                    <foreach name="service_site.areas" item="vo">
+                        <li class="market-list-item" style="background-color: {$vo.color};">
+                            <div class="market-name">{$vo.area}</div>
+                            <div class="market-line"></div>
+                            <div class="market-country">
+                                <p class="market-country-left">({$vo.country} Country)</p>
+                                <p class="market-country-right">{$vo.country}</p>
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>COMPANIES THAT HAVE ESTABLISHED COOPERATION</i></div>
+            </div>
+            <div class="companies">
+                <ul class="companies-list clearfix">
+                    <foreach name="service_site.companies" item="vo">
+                        <li class="companies-list-item">
+                            <img src="{:cmf_get_image_url($vo['url'])}" alt="{$vo.name}">
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

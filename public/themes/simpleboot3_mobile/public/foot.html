@@ -1,0 +1,83 @@
+<!--FOOT START-->
+<div class="footer">
+    <div class="footer-logo">
+        <img src="__TMPL__/public/assets/images/logo.png" alt="logo">
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-content">
+        <div class="footer-contact clearfix">
+            <div class="footer-contact-item">
+                <img src="__TMPL__/public/assets/images/email.webp" alt="email">
+                <p class="footer-contact-item-content">
+                    <a href="mailto:{$site_info.email}">{$site_info.email}</a>
+                </p>
+            </div>
+            <div class="footer-contact-item">
+                <img src="__TMPL__/public/assets/images/location.webp" alt="location">
+                <p class="footer-contact-item-content">{$site_info.address}</p>
+            </div>
+            <php>
+                $cleanNumber = preg_replace('/[^0-9]/', '', $site_info['whatsapp']);
+                if (strpos($cleanNumber, '0') === 0) {
+                $cleanNumber = preg_replace('/^0+/', '', $cleanNumber);
+                }
+            </php>
+            <div class="footer-contact-item">
+                <img src="__TMPL__/public/assets/images/whatsapp-gray.png" alt="location">
+                <p class="footer-contact-item-content">
+                    <a href="https://api.whatsapp.com/send?phone={$cleanNumber}" target="_blank">{$site_info.whatsapp}</a>
+                </p>
+            </div>
+            <div class="footer-contact-item">
+                <img src="__TMPL__/public/assets/images/phone.webp" alt="phone">
+                <p class="footer-contact-item-content">
+                    <a href="tel:{$site_info.sale_tel}">{$site_info.sale_tel}</a>
+                </p>
+            </div>
+            <div class="footer-contact-item">
+                <img src="__TMPL__/public/assets/images/inter.webp" alt="inter">
+                <p class="footer-contact-item-content">
+                    <php>
+                        if (strpos($site_info['web_site'],'http')){
+                            $web_site_href = $site_info['web_site'];
+                        }else{
+                            $web_site_href = 'http://'.$site_info['web_site'];
+                        }
+                    </php>
+                    <a href="{$web_site_href}" target="_blank">{$site_info.web_site}</a>
+                </p>
+            </div>
+            <div class="footer-contact-social">
+                <a href="{$site_info.linkedin|default='javascript:;'}"><img src="__TMPL__/public/assets/images/ins.webp" alt="ins"></a>
+                <a href="{$site_info.facebook|default='javascript:;'}"><img src="__TMPL__/public/assets/images/facebook.webp" alt="facebook"></a>
+                <a href="{$site_info.youtube|default='javascript:;'}"><img src="__TMPL__/public/assets/images/youtubi.webp" alt="youtube"></a>
+            </div>
+        </div>
+
+        <div class="footer-feedback">
+            <div class="footer-feedback-item">
+                NAME:
+                <input type="text" name="footer-name" value="" placeholder="Please Enter">
+            </div>
+            <div class="footer-feedback-line"></div>
+            <div class="footer-feedback-item">
+                EMAIL:
+                <input type="text" name="footer-email" value="" placeholder="Please Enter">
+            </div>
+            <div class="footer-feedback-line"></div>
+            <div class="footer-feedback-item">
+                MESSAGE:
+                <input type="text" name="footer-message" value="" placeholder="Please Enter">
+                <a href="{:cmf_url('portal/index/contact')}" ><img src="__TMPL__/public/assets/images/gt.webp" alt="gt"></a>
+            </div>
+            <div class="footer-feedback-line"></div>
+            <button class="footer-feedback-btn">Submit Your Request</button>
+        </div>
+    </div>
+</div>
+<!--FOOT END-->
+
+{:htmlspecialchars_decode($site_info.salesiq)}
+
+
+

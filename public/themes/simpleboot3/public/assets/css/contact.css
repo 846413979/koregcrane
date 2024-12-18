@@ -1,0 +1,238 @@
+.contact-content {
+
+}
+
+.contact-content .contact-content-left {
+    width: 955px;
+    height: 531px;
+    background: #F3F2F9;
+    float: left;
+}
+
+.contact-content .contact-content-left .contact-content-left-company {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 36px;
+    color: #333333;
+    line-height: 51px;
+    text-align: left;
+    font-style: italic;
+    text-transform: none;
+    margin-top: 130px;
+    margin-left: 60px;
+}
+
+.contact-content .contact-content-left .contact-content-left-text {
+
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+.contact-content .contact-content-left .contact-content-left-email {
+    margin-top: 60px;
+}
+
+.contact-content .contact-content-left .contact-content-left-text img {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 4px;
+}
+
+.contact-content .contact-content-left .contact-content-left-text span {
+    margin-left: 20px;
+
+}
+
+.contact-content .contact-content-left .contact-content-left-text p {
+    margin-left: 40px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333333;
+    line-height: 28px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.contact-content .contact-content-right {
+    width: 485px;
+    height: 529px;
+    background: #1562C5;
+    opacity: 0.9;
+    float: left;
+    padding: 115px 40px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 28px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.contact-content .contact-content-right .contact-content-right-text span {
+    display: block;
+}
+
+.contact-content .contact-content-right .contact-content-right-text span:last-child {
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 28px;
+    color: #FFFFFF;
+    line-height: 36px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 12px;
+}
+
+.contact-content .contact-content-right .contact-content-right-line {
+    width: 60px;
+    height: 6px;
+    background: #FFFFFF;
+    margin: 30px 0;
+}
+
+.contact-content .contact-content-right .contact-content-right-service_time {
+    margin-top: 60px;
+}
+
+.contact-message {
+    margin: 100px 0;
+    height: 560px;
+}
+
+.contact-message .contact-message-left {
+    float: left;
+}
+
+.contact-message .contact-message-left .contact-message-left-title {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 42px;
+    color: #333333;
+    line-height: 51px;
+    text-align: left;
+    font-style: italic;
+    text-transform: none;
+}
+
+.contact-message .contact-message-left .contact-message-left-text {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    color: #333333;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 30px;
+}
+
+.contact-message .contact-message-left .contact-message-left-line {
+    width: 674px;
+    height: 1px;
+    background: #DCDCDC;
+    margin: 50px 0;
+}
+
+.contact-message .contact-message-left .contact-message-left-contact {
+    float: left;
+    width: 307px;
+}
+
+.contact-message .contact-message-left .contact-message-left-contact span {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 20px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    display: block;
+}
+
+.contact-message .contact-message-left .contact-message-left-contact span:last-child {
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: 12px;
+}
+
+.contact-message .contact-message-left .contact-message-left-email {
+    float: right;
+}
+
+.contact-message .contact-message-left .contact-message-left-vertical-line {
+    width: 1px;
+    height: 60px;
+    background: #DCDCDC;
+    float: left;
+}
+
+.contact-message .contact-message-right {
+    float: left;
+    width: 726px;
+    height: 560px;
+    margin-left: 40px;
+}
+
+.contact-message .contact-message-right input,
+.contact-message .contact-message-right textarea {
+    background: #F3F2F9;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    line-height: 60px;
+}
+
+.contact-message .contact-message-right input:focus,
+.contact-message .contact-message-right textarea:focus {
+    border: none;
+}
+
+.contact-message .contact-message-right .contact-message-right-name,
+.contact-message .contact-message-right .contact-message-right-phone {
+    width: 348px;
+    height: 60px;
+    float: left;
+}
+
+.contact-message .contact-message-right .contact-message-right-phone {
+    margin-left: 30px;
+}
+
+.contact-message .contact-message-right .contact-message-right-email {
+    width: 725px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.contact-message .contact-message-right .contact-message-right-message {
+    width: 725px;
+    height: 320px;
+    margin-top: 20px;
+    resize: none;
+}
+
+.contact-message .contact-message-right .contact-message-right-btn {
+    width: 220px;
+    height: 60px;
+    background: #1562C5;
+    margin-top: 20px;
+    font-family: Trade Gothic Next LT Pro, Trade Gothic Next LT Pro;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 60px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    cursor: pointer;
+}
+

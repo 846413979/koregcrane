@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/create.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/create.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/innovate')}">Innovation & Manufacturing</a> /
+                Create
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>INNOVATE</i></div>
+            </div>
+            <div class="innovate-content">
+                <div class="innovate-content-img">
+                    <img src="{:cmf_get_image_url($list[0]['more']['thumbnail'])}" alt="{$list[0]['post_title']}">
+                </div>
+                <div class="innovate-content-list">
+                    <ul>
+                        <foreach name="list" item="vo">
+                            <li class="innovate-content-item {$key==0 ? 'active' : ''}"
+                                data-img="{:cmf_get_image_url($vo.more.thumbnail)}">
+                                <div class="innovate-content-item-btn">{$key==0 ? '-' : '+'}</div>
+                                <div class="innovate-content-item-title">{$vo.post_title}</div>
+                                <div class="innovate-content-item-text">{$vo.post_excerpt}</div>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+            <div class="innovate-project"
+                 style="background-image: url('{:cmf_get_image_url($innovate_site.bg_image)}')">
+                <div class="innovate-project-title">{$innovate_site.description}</div>
+                <div class="innovate-project-content">
+                    <ul class="innovate-project-content-list clearfix">
+                        <foreach name="innovate_site.engineering" item="vo">
+                            <li class="innovate-project-content-item">
+                                <div class="innovate-project-content-item-num">
+                                    <span>{$vo.engineering_num}</span>ITM
+                                </div>
+                                <div class="innovate-project-content-item-name">
+                                    {$vo.engineering_name}
+                                </div>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

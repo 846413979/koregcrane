@@ -1,0 +1,36 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab">匠心设置</a></li>
+        <li><a href="{:url('portal/AdminIngenuity/index')}">匠心图文列表</a></li>
+    </ul>
+    <form class="form-horizontal js-ajax-form margin-top-20" role="form" action="{:url('Ingenuity/sitePost')}"
+          method="post">
+        <div class="tabbable">
+            <div class="tab-content">
+                <div class="form-group">
+                    <label for="input-description" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>匠心描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-description" name="description" style="height: 100px;"
+                                  placeholder="请填写描述">{$site_info.description|default=''}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary js-ajax-submit" data-refresh="0">
+                            {:lang('SAVE')}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript" src="__STATIC__/js/admin.js?v={$_static_version}"></script>
+</body>
+</html>

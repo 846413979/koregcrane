@@ -12,6 +12,7 @@ namespace app\portal\model;
 
 use app\admin\model\RouteModel;
 use think\Model;
+use think\model\concern\SoftDelete;
 
 /**
  * @property mixed id
@@ -27,6 +28,10 @@ class PortalPostModel extends Model
     protected $type = [
         'more' => 'array',
     ];
+
+    use SoftDelete;
+    protected $deleteTime = 'delete_time';
+    protected $defaultSoftDelete = 0;
 
     // 开启自动写入时间戳字段
     protected $autoWriteTimestamp = true;
@@ -130,11 +135,11 @@ class PortalPostModel extends Model
 
         $this->categories()->save($categories);
 
-        $data['post_keywords'] = str_replace('，', ',', $data['post_keywords']);
-
-        $keywords = explode(',', $data['post_keywords']);
-
-        $this->addTags($keywords, $this->id);
+        if (!empty($data['post_keywords'])) {
+            $data['post_keywords'] = str_replace('，', ',', $data['post_keywords']);
+            $keywords = explode(',', $data['post_keywords']);
+            $this->addTags($keywords, $this->id);
+        }
 
         return $this;
 
@@ -188,12 +193,11 @@ class PortalPostModel extends Model
             $article->categories()->attach(array_values($newCategoryIds));
         }
 
-
-        $data['post_keywords'] = str_replace('，', ',', $data['post_keywords']);
-
-        $keywords = explode(',', $data['post_keywords']);
-
-        $this->addTags($keywords, $data['id']);
+        if(!empty($data['post_keywords'])) {
+            $data['post_keywords'] = str_replace('，', ',', $data['post_keywords']);
+            $keywords = explode(',', $data['post_keywords']);
+            $this->addTags($keywords, $data['id']);
+        }
 
         return $this;
 
@@ -370,7 +374,7 @@ class PortalPostModel extends Model
      * @param array $data 页面数据
      * @return $this
      */
-    public function adminAddPage($data)
+    public function adminAddPage($data, $post_type = 2)
     {
         $data['user_id'] = cmf_get_current_admin_id();
 
@@ -379,7 +383,7 @@ class PortalPostModel extends Model
         }
 
         $data['post_status'] = empty($data['post_status']) ? 0 : 1;
-        $data['post_type']   = 2;
+        $data['post_type']   = $post_type;
         $this->save($data);
 
         return $this;
@@ -391,7 +395,7 @@ class PortalPostModel extends Model
      * @param array $data 页面数据
      * @return $this
      */
-    public function adminEditPage($data)
+    public function adminEditPage($data, $post_type = 2)
     {
         $data['user_id'] = cmf_get_current_admin_id();
 
@@ -400,16 +404,19 @@ class PortalPostModel extends Model
         }
 
         $data['post_status'] = empty($data['post_status']) ? 0 : 1;
-        $data['post_type']   = 2;
+        $data['post_type']   = $post_type;
 
         $thisPage = PortalPostModel::find($data['id']);
         $thisPage->save($data);
 
-        $routeModel = new RouteModel();
-        $routeUrl   = $data['post_alias'] ? trim($data['post_alias'], '$') . '$' : '';
-        $routeModel->setRoute($routeUrl, 'portal/Page/index', ['id' => $data['id']], 2, 5000);
+        if (!empty($data['post_alias'])){
+            $routeModel = new RouteModel();
+            $routeUrl   = $data['post_alias'] ? trim($data['post_alias'], '$') . '$' : '';
+            $routeModel->setRoute($routeUrl, 'portal/Page/index', ['id' => $data['id']], 2, 5000);
 
-        $routeModel->getRoutes(true);
+            $routeModel->getRoutes(true);
+        }
+
         return $this;
     }
 

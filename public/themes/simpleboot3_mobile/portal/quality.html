@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/create.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/create.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/innovate')}">Innovation & Manufacturing</a> /
+                Quality
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title">QUALITY</div>
+
+            <div class="quality-content-desc">
+                {$quality_site.description}
+            </div>
+
+            <div class="quality-content-project">
+                <ul class="clearfix">
+                    <foreach name="quality_site.engineering" item="vo">
+                        <li class="quality-content-project-item">
+                            <div class="quality-content-project-num">
+                                {$vo.engineering_num}
+                            </div>
+                            <div class="quality-content-project-name">
+                                {$vo.engineering_name}
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+
+            <div class="swiper innovate-content">
+                <div class="swiper-wrapper">
+                    <foreach name="list" item="vo">
+                        <div class="swiper-slide">
+                            <div class="innovate-content-li">
+                                <div class="innovate-content-li-img">
+                                    <img src="{:cmf_get_image_url($vo['more']['thumbnail'])}" alt="product">
+                                </div>
+                                <div class="innovate-content-li-text">
+                                    <div class="innovate-content-li-title">
+                                        {$vo.post_title}
+                                    </div>
+                                    <div class="innovate-content-li-description">
+                                        {$vo.post_excerpt}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+            <div class="innovate-line"></div>
+            <script>
+                var mySwiper = new Swiper('.innovate-content', {
+                    pagination: {
+                        el: '.innovate-line',
+                    },
+                })
+            </script>
+
+        </div>
+
+    </div>
+
+    <include file="public@foot"/>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/services.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="/">Services</a> / Excellent Services
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content" style="padding: 80px 0;">
+            <div class="service-content clearfix">
+                <div class="service-content-left">
+                    <div class="service-content-title">
+                        {$service_site.title1|default=''}
+                    </div>
+                    <div class="service-content-text">
+                        {$service_site.content1|default=''}
+                    </div>
+                </div>
+                <div class="service-content-right">
+                    <img src="{:cmf_get_image_url($service_site.image1)}"
+                         alt="Installation guide">
+                </div>
+            </div>
+            <div class="service-content clearfix">
+                <div class="service-content-left">
+                    <img src="{:cmf_get_image_url($service_site.image2)}"
+                         alt="Installation guide">
+                </div>
+                <div class="service-content-right">
+                    <div class="service-content-title">
+                        {$service_site.title2|default=''}
+                    </div>
+                    <div class="service-content-text">
+                        {$service_site.content2|default=''}
+                    </div>
+                </div>
+            </div>
+            <div class="service-content clearfix">
+                <div class="service-content-left">
+                    <div class="service-content-title">
+                        {$service_site.title3|default=''}
+                    </div>
+                    <div class="service-content-text">
+                        {$service_site.content3|default=''}
+                    </div>
+                </div>
+                <div class="service-content-right">
+                    <img src="{:cmf_get_image_url($service_site.image3)}"
+                         alt="Installation guide">
+                </div>
+            </div>
+            <div class="service-content clearfix">
+                <div class="service-content-left">
+                    <img src="{:cmf_get_image_url($service_site.image4)}"
+                         alt="Installation guide">
+                </div>
+                <div class="service-content-right">
+                    <div class="service-content-title">
+                        {$service_site.title4|default=''}
+                    </div>
+                    <div class="service-content-text">
+                        {$service_site.content4|default=''}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

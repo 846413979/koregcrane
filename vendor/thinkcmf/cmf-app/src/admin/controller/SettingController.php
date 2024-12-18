@@ -58,6 +58,8 @@ class SettingController extends AdminBaseController
         $cdnSettings    = cmf_get_option('cdn_settings');
         $cmfSettings    = cmf_get_option('cmf_settings');
         $adminSettings  = cmf_get_option('admin_settings');
+        $productSettings  = cmf_get_option('product_setting');
+        $indexSettings  = cmf_get_option('index_setting');
 
         $adminThemes = [];
         $themes      = cmf_scan_dir(WEB_ROOT . config('template.cmf_admin_theme_path') . '/*', GLOB_ONLYDIR);
@@ -81,6 +83,8 @@ class SettingController extends AdminBaseController
         $this->assign("cdn_settings", $cdnSettings);
         $this->assign("admin_settings", $adminSettings);
         $this->assign("cmf_settings", $cmfSettings);
+        $this->assign("product_setting", $productSettings);
+        $this->assign("index_setting", $indexSettings);
 
         return $this->fetch();
     }
@@ -111,9 +115,11 @@ class SettingController extends AdminBaseController
 
             $cmfSettings = $this->request->param('cmf_settings/a');
 
-            $bannedUsernames                 = preg_replace("/[^0-9A-Za-z_\\x{4e00}-\\x{9fa5}-]/u", ",", $cmfSettings['banned_usernames']);
-            $cmfSettings['banned_usernames'] = $bannedUsernames;
-            cmf_set_option('cmf_settings', $cmfSettings);
+            if(!empty($cmfSettings)){
+                $bannedUsernames                 = preg_replace("/[^0-9A-Za-z_\\x{4e00}-\\x{9fa5}-]/u", ",", $cmfSettings['banned_usernames']);
+                $cmfSettings['banned_usernames'] = $bannedUsernames;
+                cmf_set_option('cmf_settings', $cmfSettings);
+            }
 
             $cdnSettings = $this->request->param('cdn_settings/a');
             cmf_set_option('cdn_settings', $cdnSettings);
@@ -286,6 +292,141 @@ class SettingController extends AdminBaseController
 
         cmf_clear_cache();
         return $this->fetch();
+    }
+
+
+    /**
+     *
+     * 产品配置
+     *
+     * **/
+    public function productSitePost()
+    {
+
+        if (!$this->request->isPost()) {
+            $this->error('请求错误');
+        }
+
+        $params = $this->request->post();
+
+        $product_site = [];
+        //认证证书
+        if (!empty($params['authentication_mark_urls']) && !empty($params['authentication_mark_names'])) {
+            foreach ($params['authentication_mark_urls'] as $k => $url) {
+                if(empty($params['authentication_mark_names'][$k])){
+                    $this->error('认证名称不能为空');
+                }
+                $product_site['authentication_mark'][] = [
+                    'url' => $url,
+                    'name' => $params['authentication_mark_names'][$k]
+                ];
+            }
+        }
+        //可配吊具
+        if (!empty($params['sling_available_urls']) && !empty($params['sling_available_names'])) {
+            foreach ($params['sling_available_urls'] as $k => $url) {
+                if(empty($params['sling_available_names'][$k])){
+                    $this->error('吊具名称不能为空');
+                }
+                $product_site['sling_available'][] = [
+                    'url' => $url,
+                    'name' => $params['sling_available_names'][$k]
+                ];
+            }
+        }
+        //可配吊具（已选中）
+        if (!empty($params['sling_available_active_urls']) && !empty($params['sling_available_active_names'])) {
+            foreach ($params['sling_available_active_urls'] as $k => $url) {
+                if(empty($params['sling_available_active_names'][$k])){
+                    $this->error('吊具名称不能为空');
+                }
+                $product_site['sling_available_active'][] = [
+                    'url' => $url,
+                    'name' => $params['sling_available_active_names'][$k]
+                ];
+            }
+        }
+        //起重量
+        if(!empty($params['lifting_capacity'])){
+            $product_site['lifting_capacity'] = $params['lifting_capacity'];
+        }
+        //工作电压
+        if(!empty($params['operating_voltage'])){
+            $product_site['operating_voltage'] = $params['operating_voltage'];
+        }
+        //工作赫兹
+        if(!empty($params['operating_hertz'])){
+            $product_site['operating_hertz'] = $params['operating_hertz'];
+        }
+        //工作等级
+        if(!empty($params['job_level'])){
+            $product_site['job_level'] = $params['job_level'];
+        }
+        //产品附件
+        if (!empty($params['file_url']) && !empty($params['file_name'])) {
+            $product_site['product_file'] = [
+                'url' => cmf_asset_relative_url($params['file_url']),
+                'name' => $params['file_name']
+            ];
+        }
+
+        cmf_set_option('product_setting',$product_site);
+
+        //清空缓存
+        cmf_clear_cache();
+        return $this->success('保存成功');
+    }
+
+    public function indexSitePost()
+    {
+        if (!$this->request->isPost()) {
+            $this->error('请求错误');
+        }
+
+        $params = $this->request->post();
+
+        $index_site = [];
+
+        if (!empty($params['create_bg'])){
+            $index_site['create_bg'] = $params['create_bg'];
+        }
+        if (!empty($params['create'])){
+            $index_site['create'] = $params['create'];
+        }
+        if (!empty($params['ingenuity'])){
+            $index_site['ingenuity'] = $params['ingenuity'];
+        }
+        if (!empty($params['quality'])){
+            $index_site['quality'] = $params['quality'];
+        }
+        if (!empty($params['choose_title'])){
+            $index_site['choose_title'] = $params['choose_title'];
+        }
+        if (!empty($params['choose_description'])){
+            $index_site['choose_description'] = $params['choose_description'];
+        }
+        if (!empty($params['about_description'])){
+            $index_site['about_description'] = $params['about_description'];
+        }
+        if (!empty($params['about_images_urls']) && !empty($params['about_images_names'])) {
+            foreach ($params['about_images_urls'] as $k => $url) {
+                if(empty($params['about_images_names'][$k])){
+                    $this->error('图片名称不能为空');
+                }
+                $index_site['about_images'][] = [
+                    'url' => $url,
+                    'name' => $params['about_images_names'][$k]
+                ];
+            }
+        }
+        
+
+        cmf_set_option('index_setting',$index_site);
+
+        //清空缓存
+        cmf_clear_cache();
+        return $this->success('保存成功');
+
     }
 
 

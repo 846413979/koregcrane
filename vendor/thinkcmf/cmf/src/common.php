@@ -169,7 +169,6 @@ function cmf_get_current_theme()
 
     $t     = 't';
     $theme = config('template.cmf_default_theme');
-
     $cmfDetectTheme = config('template.cmf_detect_theme');
     if ($cmfDetectTheme) {
         if (isset($_GET[$t])) {
@@ -2370,3 +2369,16 @@ function cmf_together(string $dayDayUp = '2022-08-03 01:58')
 }
 
 
+function cmf_client_ip()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        // 如果 X_FORWARDED_FOR 包含多个IP地址，只取第一个
+        $ip = explode(',', $ip)[0];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}

@@ -74,7 +74,7 @@ class RouteController extends AdminBaseController
     public function addPost()
     {
         if ($this->request->isPost()) {
-            $data       = $this->request->param();
+            $data       = $this->request->post();
             $routeModel = new RouteModel();
             $result     = $this->validate($data, 'Route');
             if ($result !== true) {
@@ -123,7 +123,7 @@ class RouteController extends AdminBaseController
     public function editPost()
     {
         if ($this->request->isPost()) {
-            $data       = $this->request->param();
+            $data       = $this->request->post();
             $routeModel = new RouteModel();
             $result     = $this->validate($data, 'Route');
             if ($result !== true) {

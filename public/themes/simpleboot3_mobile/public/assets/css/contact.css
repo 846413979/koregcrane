@@ -1,0 +1,109 @@
+.content-title{
+    margin-top: 2rem;
+}
+.contact-content{
+    width: 100%;
+    margin: 1rem auto 0;
+    padding: 1rem 1.25rem;
+    background-color: #1562C5;
+    color: #FFFFFF;
+}
+
+.contact-content .contact-content-company{
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 5rem;
+    font-style: italic;
+}
+.contact-content .contact-content-text{
+    font-family: Roboto, Roboto;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin-top: 1.8rem;
+}
+.contact-content .contact-content-text span{
+    display: block;
+}
+.contact-content .contact-content-text span:last-child{
+    font-family: DIN, DIN;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #FFFFFF;
+    line-height: 3rem;
+    margin-top: 0.5rem;
+}
+.contact-content .contact-content-service_time{
+    margin-top: 2rem;
+}
+
+.contact-message{
+    margin: 2rem 1.25rem 5rem;
+}
+.contact-message .contact-message-title {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 2.4rem;
+    color: #333333;
+    line-height: 3.3rem;
+    font-style: italic;
+}
+.contact-message .contact-message-text{
+    font-family: Roboto, Roboto;
+    font-size: 1.6rem;
+    color: #333333;
+    line-height: 2rem;
+    margin-top: 1rem;
+}
+.contact-message input,
+.contact-message textarea{
+    background: #F3F2F9;
+    border: none;
+    outline: none;
+    padding-left: 2rem;
+    line-height: 3rem;
+}
+.contact-message input:focus,
+.contact-message textarea:focus{
+    border: none;
+}
+.contact-message input{
+    width: 35rem;
+    height: 5rem;
+    margin-top: 1rem;
+}
+.contact-message .contact-message-message{
+    width: 35rem;
+    height: 20rem;
+    margin-top: 1rem;
+    resize: none;
+}
+.contact-message .contact-message-btn{
+    width: 22rem;
+    height: 5rem;
+    background: #1562C5;
+    font-family: Trade Gothic Next LT Pro, Trade Gothic Next LT Pro;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    line-height: 5rem;
+    text-align: center;
+    cursor: pointer;
+    margin: 2rem auto 0;
+}
+
+.iframe-container-map {
+    position: relative;
+    width: 100%;
+    height: 35rem;
+    padding-top: 35%;
+}
+
+.iframe-container-map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+

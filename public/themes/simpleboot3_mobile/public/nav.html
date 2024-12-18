@@ -1,0 +1,94 @@
+<!--NAV START-->
+<div class="header">
+    <div class="logo">
+        <a href="/">
+            <img class="logo-img" src="__TMPL__/public/assets/images/logo-select.png"
+                 alt="{$site_info.site_name|default=''}" title="{$site_info.site_name|default=''}">
+        </a>
+    </div>
+    <div class="nav">
+        <div class="nav-btn fr">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a class="nav-title" href="/">HOME</a></li>
+            <li>
+                <a class="nav-title" href="{:cmf_url('portal/index/product')}">PRODUCTS&CASE</a>
+                <div class="nav-sub-btn">+</div>
+                <div class="nav-sub product-nav">
+                    <ul class="nav-sub-ul">
+                        <foreach name="category_list" item="vo">
+                            <li>
+                                <a href="{:cmf_url('portal/index/product',array('id'=>$vo['id']))}">
+                                    <img src="{:cmf_get_image_url($vo['thumbnail'])}" alt="">
+                                    <div class="nav-sub-title">{$vo['name']}</div>
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a class="nav-title" href="{:cmf_url('portal/index/international')}">SERVICES</a>
+                <div class="nav-sub-btn">+</div>
+                <div class="nav-sub">
+                    <div class="nav-sub-right">
+                        <ul class="nav-sub-list">
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/international')}">Global Markets</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/service')}">Excellent Services</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/download')}">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="nav-title" href="{:cmf_url('portal/index/innovate')}">INNOVATION & MANUFACTURING</a>
+                <div class="nav-sub-btn">+</div>
+                <div class="nav-sub">
+                    <div class="nav-sub-right">
+                        <ul class="nav-sub-list">
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/innovate')}">CREATE</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/intelligent')}">INTELLIGENT</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/ingenuity')}">INGENUITY</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/quality')}">QUALITY</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="nav-title" href="{:cmf_url('portal/index/introduction')}">ABOUT US</a>
+                <div class="nav-sub-btn">+</div>
+                <div class="nav-sub">
+                    <div class="nav-sub-right">
+                        <ul class="nav-sub-list">
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/introduction')}">COMPANY INTRODUCTION</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{:cmf_url('portal/index/corporate')}">CORPORATE IMAGE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a class="nav-title" href="{:cmf_url('portal/index/contact')}">CONTACT US</a></li>
+        </ul>
+    </div>
+</div>
+<!--NAV END-->

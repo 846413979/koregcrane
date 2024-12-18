@@ -1,0 +1,379 @@
+
+.content-text {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+    line-height: 36px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.content-img {
+    width: 1440px;
+    height: 527px;
+    margin-top: 30px;
+}
+
+.content-img img {
+    width: 1440px;
+    height: 527px;
+}
+
+
+.market-container {
+    margin-top: 60px;
+}
+
+.market-container .market-list-item {
+    width: 345px;
+    height: 263px;
+    float: left;
+    padding: 40px 30px 0;
+    margin-right: 20px;
+}
+
+.market-container .market-list-item:last-child {
+    margin-right: 0;
+}
+
+.market-container .market-list-item .market-name {
+    height: 82px;
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 26px;
+    color: #FFFFFF;
+    line-height: 45px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+
+.market-container .market-list-item .market-line {
+    width: 285px;
+    height: 2px;
+    background: #FFFFFF;
+    margin-top: 40px;
+}
+
+.market-container .market-list-item .market-country {
+    margin-top: 24px;
+}
+
+.market-container .market-list-item .market-country .market-country-left {
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 45px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+}
+
+.market-container .market-list-item .market-country .market-country-right {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 42px;
+    color: #FFFFFF;
+    line-height: 45px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    float: right;
+}
+
+.companies-title {
+    width: 1440px;
+    margin: 80px auto 0;
+}
+
+.companies-title .companies-title-line {
+    width: 96px;
+    height: 1px;
+    background: #8E8E8E;
+    float: left;
+    margin-top: 25px;
+}
+
+.companies-title .companies-title-text {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 42px;
+    color: #333333;
+    line-height: 51px;
+    font-style: normal;
+    text-transform: none;
+    float: left;
+    margin: 0 50px;
+}
+
+.companies {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.companies .companies-list-item {
+    width: 240px;
+    height: 240px;
+    float: left;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid #DCDCDC;
+}
+
+.companies .companies-list-item:nth-child(5n) {
+    margin-right: 0;
+}
+
+.companies .companies-list-item img {
+    width: 238px;
+    height: 238px;
+    transition: all 0.5s;
+}
+
+.companies .companies-list-item:hover img {
+    transform: scale(1.2);
+}
+
+
+.service-content {
+    margin-top: 60px;
+}
+
+.service-content:first-child {
+    margin-top: 0;
+}
+
+.service-content .service-content-left, .service-content .service-content-right {
+    float: left;
+    width: 690px;
+    height: 458px;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    line-height: 30px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-content .service-content-right {
+    margin-left: 60px;
+}
+
+.service-content .service-content-title {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.service-content .service-content-text {
+    margin-top: 40px;
+}
+
+
+.download_content_main {
+    margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+.download_content_main_list_li {
+    width: 586px;
+    height: 272px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.16);
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.download_content_main_list_li:nth-child(2n+1) {
+    margin-left: 0;
+}
+
+.download_content_main_list_li_title {
+    font-family: Arial, Arial, serif;
+    font-weight: bold;
+    font-size: 36px;
+    color: #333333;
+    line-height: 60px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    padding: 40px 30px;
+    border-bottom: 1px solid #DCDCDC;
+    height: 200px;
+}
+
+.download_content_main_list_li_foot {
+    width: 100%;
+    height: 71px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.download_content_main_list_li_foot_line {
+    width: 4px;
+    height: 18px;
+    background: #003F9B;
+    margin-left: 30px;
+}
+
+.download_content_main_list_li_foot_text {
+    font-family: Arial, Arial;
+    font-weight: 400;
+    font-size: 24px;
+    color: #333333;
+    line-height: 36px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin-left: 20px;
+}
+
+.download_content_main_list_li_foot_eye {
+    position: absolute;
+    right: 30px;
+}
+
+/*弹窗*/
+.popover_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+.popover_wrap .popover_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1212px;
+    height: 586px;
+    margin-top: -293px;
+    margin-left: -606px;
+    background: linear-gradient(180deg, #E6F1FF 0%, #FFFFFF 30%);
+    border-radius: 24px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.popover_wrap .popover_container .popover_close {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.popover_wrap .popover_container .popover_content {
+    width: 1050px;
+    margin-left: 80px;
+    margin-top: 60px;
+}
+
+.popover_wrap .popover_container .popover_content .popover_title h2 {
+    width: 100%;
+    font-family: Arial-BoldMT, Arial-BoldMT;
+    font-weight: bold;
+    font-size: 40px;
+    color: #333333;
+    line-height: 44px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.popover_wrap .popover_container .popover_content .popover_title .popover_title_description {
+    width: 100%;
+    height: 20px;
+    font-family: ArialMT, ArialMT;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333333;
+    line-height: 20px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    margin-top: 20px;
+}
+
+.popover_wrap .popover_container .popover_content .popover_title .popover_title_description a:hover {
+    color: #003F9B;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_name,
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone,
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_email {
+    float: left;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone,
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_email {
+    margin-left: 16px;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_name input,
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone input,
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_email input {
+    width: 336px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 30px 30px 30px 30px;
+    padding-left: 20px;
+    border: 1px solid #DCDCDC;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_content textarea {
+    width: 100%;
+    height: 190px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border-radius: 16px 16px 16px 16px;
+    font-family: Arial, Arial;
+    font-size: 16px;
+    color: #999999;
+    line-height: 32px;
+    padding: 10px 20px;
+    border: 1px solid #DCDCDC;
+    resize: none;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_submit {
+    width: 220px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.popover_wrap .popover_container .popover_content .popover_form .popover_form_submit button {
+    width: 220px;
+    height: 60px;
+    background: #003F9B;
+    border-radius: 30px 30px 30px 30px;
+    border-width: 0;
+    font-family: Arial, Arial;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 0px;
+    font-style: normal;
+    text-transform: none;
+}
+

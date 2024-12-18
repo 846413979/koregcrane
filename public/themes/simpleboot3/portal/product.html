@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/products.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/product.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / Products & Cases
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="products-content clearfix">
+            <div class="products-content-left">
+                <div class="product_select">
+                    <select name="category_id" id="product_category">
+                        <option value="0" data-url="{:cmf_url('portal/index/product')}">All Products</option>
+                        <foreach name="category_list" item="vo">
+                            <option value="{$vo.id}"
+                                    data-url="{:cmf_url('portal/index/product',array('id'=>$vo['id']))}"
+                                    {$vo.id==$category.id ?
+                            'selected' : ''}>{$vo.name}</option>
+                        </foreach>
+                    </select>
+                </div>
+                <div class="product_select">
+                    <select name="product_tonnage" id="product_tonnage">
+                        <option value="">All Tonnage</option>
+                        <foreach name="product_setting.lifting_capacity" item="vo">
+                            <option value="{$vo}" {:input(
+                            'weight')==$vo ? 'selected' : ''}>{$vo}</option>
+                        </foreach>
+                    </select>
+                </div>
+                <div class="product_industry">
+                    <div class="product_industry_title"><i>Industry Application:</i></div>
+                    <ul class="product_industry_list">
+                        <foreach name="profession_list" item="vo">
+                            <li class="product_industry_list_item {$vo.checked ? 'active' : ''}" data-id="{$vo.id}">
+                                {$vo.name}
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+            <div class="products-content-right">
+                <ul class="products-content-right-list clearfix">
+                    <foreach name="list" item="vo">
+                        <li class="products-content-right-list-item" data-id="{$vo.id}">
+                            <a href="{:cmf_url('portal/index/product_info',array('id'=>$vo['id']))}">
+                                <div class="products-content-right-list-item-img">
+                                    <img src="{:cmf_get_image_url($vo.thumbnail)}" alt="{$vo.title}">
+                                </div>
+                                <div class="products-content-right-list-item-title">{$vo.title}</div>
+                            </a>
+                        </li>
+                    </foreach>
+                </ul>
+                <div class="products-content-right-page">
+                    <ul class="pagination">{$page}</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

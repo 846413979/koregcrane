@@ -1,188 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>首页 {$site_info.site_name|default=''}</title>
-    <meta name="keywords" content="{$site_info.site_seo_keywords|default=''}"/>
-    <meta name="description" content="{$site_info.site_seo_description|default=''}">
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <include file="public@head"/>
-    <link href="__TMPL__/public/assets/css/slippry/slippry.css" rel="stylesheet">
-    <style>
-        .caption-wraper {
-            position: absolute;
-            left: 50%;
-            bottom: 2em;
-        }
-
-        .caption-wraper .caption {
-            position: relative;
-            left: -50%;
-            background-color: rgba(0, 0, 0, 0.54);
-            padding: 0.4em 1em;
-            color: #fff;
-            -webkit-border-radius: 1.2em;
-            -moz-border-radius: 1.2em;
-            -ms-border-radius: 1.2em;
-            -o-border-radius: 1.2em;
-            border-radius: 1.2em;
-        }
-
-        .tc-gridbox {
-            margin: 0;
-        }
-
-        @media (max-width: 767px) {
-            .caption-wraper {
-                left: 0;
-                bottom: 0.4em;
-            }
-
-            .caption-wraper .caption {
-                left: 0;
-                padding: 0.2em 0.4em;
-                font-size: 0.92em;
-                -webkit-border-radius: 0;
-                -moz-border-radius: 0;
-                -ms-border-radius: 0;
-                -o-border-radius: 0;
-                border-radius: 0;
-            }
-        }
-
-    </style>
-    <hook name="before_head_end"/>
+    <link href="__TMPL__/public/assets/css/home.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/home.js"></script>
 </head>
-<body class="body-white">
-<include file="public@nav"/>
-
-<ul id="home-slider" class="list-unstyled">
-    <php>
-        $top_slide_id=empty($theme_vars['top_slide'])?1:$theme_vars['top_slide'];
-    </php>
-    <slides id="$top_slide_id">
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">{$vo.title|default=''}</div>
-            </div>
-            <a href="{$vo.url|default=''}"><img src="{:cmf_get_image_url($vo.image)}" alt=""></a>
-        </li>
-    </slides>
-    <noslides id="$top_slide_id">
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/1.jpg" alt=""></a>
-        </li>
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/2.jpg" alt=""></a>
-        </li>
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/3.jpg" alt=""></a>
-        </li>
-    </noslides>
-</ul>
-
-<div class="container">
-    <widget name="features">
-        <div>
-            <h1 class="text-center">{$widget.title}</h1>
-            <h3 class="text-center">{$widget.vars.sub_title}</h3>
-        </div>
-        <php>
-            $features_count = count($widget['vars']['features']);
-            $rows = ceil($features_count/3);
-        </php>
-        <for start="1" end="$rows" comparison="elt" step="1" name="row">
-            <php>
-                $first_row = ($row-1)*3;
-                $features = array_slice($widget['vars']['features'],$first_row,3);
-            </php>
-            <div class="row">
-                <foreach name="features" item="vo">
-                    <div class="col-md-4">
-                        <h2 class="font-large nospace"><i class="fa fa-{$vo.icon}"></i> {$vo.title}</h2>
-                        <p>{$vo.content}</p>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+    <!--BANNER START-->
+    <div class="banner">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <foreach name="slides" item="vo">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{$key}"
+                        class="{$key==0 ? 'active' : ''}"></li>
+                </foreach>
+            </ol>
+            <div class="carousel-inner">
+                <foreach name="slides" item="vo">
+                    <div class="carousel-item {$key==0 ? 'active' : ''}">
+                        <img src="{:cmf_get_image_url($vo['image'])}" class="d-block w-100" alt="{$vo.title}">
                     </div>
                 </foreach>
             </div>
-        </for>
-
-    </widget>
-
-    <widget name="last_news">
-        <div>
-            <h1 class="text-center">{$widget.title}</h1>
+            <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators"
+                    data-slide="prev" style="display: none;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators"
+                    data-slide="next" style="display: none;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </button>
         </div>
+    </div>
+    <!--BANNER END-->
 
-        <div class="row">
-            <php>
-                $widget["vars"]["last_news_category_id"] = empty($widget["vars"]["last_news_category_id"])?1:$widget["vars"]["last_news_category_id"];
-                $last_news_limit=4;
-            </php>
-            <portal:articles limit="$last_news_limit" order="post.published_time DESC"
-                             categoryIds="$widget.vars.last_news_category_id">
-                <div class="col-md-3">
-                    <div class="tc-gridbox">
-                        <div class="header">
-                            <div class="item-image">
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">
-                                    <present name="vo.more.thumbnail">
-                                        <empty name="vo.more.thumbnail">
-                                            <img src="__TMPL__/public/assets/images/default-thumbnail.png"
-                                                 class="img-responsive"
-                                                 alt="">
-                                            <else/>
-                                            <img src="{:cmf_get_image_url($vo.more.thumbnail)}"
-                                                 class="img-responsive"
-                                                 alt="">
-                                        </empty>
-                                        <else/>
-                                        <img src="__TMPL__/public/assets/images/default-thumbnail.png"
-                                             class="img-responsive"
-                                             alt="">
-                                    </present>
-                                </a>
+    <!--HOT PRODUCTS START-->
+    <div class="hot-product">
+        <div class="content-title margin80">
+            <div class="content-title-line"></div>
+            <div class="content-title-text"><i>PRODUCT RECOMMENDATION</i></div>
+        </div>
+        <div class="product-content">
+            <ul class="product-content-ul">
+                <foreach name="hot_products" item="vo">
+                    <li class="product-content-li">
+                        <a href="{:cmf_url('portal/index/product_info',array('id'=>$vo['id']))}">
+                            <div class="product-content-li-img">
+                                <img src="{:cmf_get_image_url($vo['thumbnail'])}" alt="product">
                             </div>
-                            <h3>
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">{$vo.post_title}</a>
-                            </h3>
-                            <hr>
-                        </div>
-                        <div class="body">
-                            <p>
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">...</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </portal:articles>
+                            <div class="product-content-li-title">
+                                {$vo.title}
+                            </div>
+                        </a>
+                    </li>
+                </foreach>
+            </ul>
         </div>
-    </widget>
-    <include file="public@footer"/>
+        <div class="product-line">
+            <ul>
+                <if condition="count($hot_products) gt 4">
+                    <li class="product-line-item active"></li>
+                    <li class="product-line-item"></li>
+                    <if condition="count($hot_products) gt 8">
+                        <li class="product-line-item"></li>
+                        <if condition="count($hot_products) gt 12">
+                            <li class="product-line-item"></li>
+                            <if condition="count($hot_products) gt 16">
+                                <li class="product-line-item"></li>
+                            </if>
+                        </if>
+                    </if>
+                </if>
+            </ul>
+        </div>
+    </div>
+    <!--HOT PRODUCTS END-->
+
+    <!--Innovation START-->
+    <div class="innovation clearfix">
+        <div class="innovation-img">
+            <img src="{:cmf_get_image_url($index_site['create_bg'])}" alt="create">
+        </div>
+        <div class="innovation-list">
+            <div class="innovation-list-title">CREATE</div>
+            <div class="innovation-list-desc">
+                {$index_site['create']}
+            </div>
+            <a href="{:cmf_url('portal/index/innovate')}">
+                <div class="innovation-list-more">
+                    LEARN MORE
+                    <i class="iconfont">&#xe62a;</i>
+                </div>
+            </a>
+        </div>
+        <div class="innovation-list">
+            <div class="innovation-list-title">INGENUITY</div>
+            <div class="innovation-list-desc">
+                {$index_site['ingenuity']}
+            </div>
+            <a href="{:cmf_url('portal/index/ingenuity')}">
+                <div class="innovation-list-more">
+                    LEARN MORE
+                    <i class="iconfont">&#xe62a;</i>
+                </div>
+            </a>
+        </div>
+        <div class="innovation-list">
+            <div class="innovation-list-title">QUALITY</div>
+            <div class="innovation-list-desc">
+                {$index_site['quality']}
+            </div>
+            <a href="{:cmf_url('portal/index/quality')}">
+                <div class="innovation-list-more">
+                    LEARN MORE
+                    <i class="iconfont">&#xe62a;</i>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--Innovation END-->
+
+    <!--CHOOSE START-->
+    <div class="choose">
+        <div class="content-title">
+            <div class="content-title-line"></div>
+            <div class="content-title-text choose-content-title"><i>WHY CHOOSE US</i></div>
+        </div>
+        <div class="choose-content clearfix">
+            <div class="choose-content-left">
+                <div class="choose-left-title">
+                    {$index_site.choose_title}
+                </div>
+                <div class="choose-left-content">
+                    {$index_site.choose_description}
+                </div>
+            </div>
+            <div class="choose-content-right">
+                <ul>
+                    <foreach name="index_site.about_images" item="vo">
+                        <li class="choose_right_item">
+                            <img src="{:cmf_get_image_url($vo['url'])}" alt="{$vo.name}">
+                            <div class="choose-right-title">
+                                {$vo.name}
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--CHOOSE END-->
+    <include file="public@foot"/>
 </div>
-<!-- /container -->
-<include file="public@scripts"/>
-<script src="__TMPL__/public/assets/js/slippry.min.js"></script>
-<script>
-    $(function () {
-        $("#home-slider").slippry({
-            transition: 'fade',
-            useCSS: true,
-            captions: false,
-            speed: 1000,
-            pause: 3000,
-            auto: true,
-            preload: 'visible'
-        });
-        $("#home-slider").show();
-    });
-</script>
-<hook name="before_body_end"/>
 </body>
 </html>

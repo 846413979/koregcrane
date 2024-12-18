@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/services.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/services.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/international')}">Services</a> / Download
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="download_content_main">
+                <div class="download_content_main_list">
+                    <ul class="download_content_main_list_ul">
+                        <foreach name="list" item="vo">
+                            <li class="download_content_main_list_li"
+                                data-url="{:cmf_get_image_preview_url($vo.more.file.url)}">
+                                <div class="download_content_main_list_li_title">
+                                    <i>{$vo.post_title}</i>
+                                </div>
+                                <div class="download_content_main_list_li_foot">
+                                    <div class="download_content_main_list_li_foot_line"></div>
+                                    <div class="download_content_main_list_li_foot_text">
+                                        View PDF
+                                    </div>
+                                    <div class="download_content_main_list_li_foot_eye">
+                                        <img src="__TMPL__/public/assets/images/eyes.png" alt="view"
+                                             data-default_img="__TMPL__/public/assets/images/eye.webp"
+                                             data-active_img="__TMPL__/public/assets/images/eye-active.webp">
+                                    </div>
+                                </div>
+                            </li>
+                        </foreach>
+
+                    </ul>
+                    <div class="clear_both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <include file="public@foot"/>
+</div>
+
+
+<!--弹窗-->
+<input type="hidden" id="session" value="{:session('user_download')}">
+<div class="popover_wrap" style="display: none">
+    <div class="popover_container">
+        <div class=popover_close>
+            <img src="__TMPL__/public/assets/images/close.png" alt="">
+        </div>
+        <div class="popover_content">
+            <div class="popover_title">
+                <h2>Develop your lifting solution</h2>
+                <p class="popover_title_description">Contact us today by email at :<a href="mailto:{$site_info.email}">{$site_info.email}</a>,
+                    or fill out the form below.</p>
+            </div>
+            <div class="popover_form">
+                <form method="post">
+                    <div class="popover_form_name">
+                        <input id="popover-name" type="text" name="name" placeholder="Name:">
+                    </div>
+                    <div class="popover_form_phone">
+                        <input id="popover-phone" type="text" name="phone" placeholder="Phone / WhatsApp:">
+                    </div>
+                    <div class="popover_form_email">
+                        <input id="popover-email" type="text" name="email" placeholder="E-mail:">
+                    </div>
+                    <div class="popover_form_content">
+                        <textarea id="popover-content" name="content" placeholder="Message:"></textarea>
+                    </div>
+                    <div class="popover_form_submit">
+                        <input type="hidden" id="file_url" value="">
+                        <button id="popover-submit" type="button">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

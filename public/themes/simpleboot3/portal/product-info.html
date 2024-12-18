@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/product-info.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/product-info.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/product')}">Products & Cases</a> / Details
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="product_info clearfix">
+            <div class="info_left_box">
+                <div class="info_left_title">
+                    <h2>{$product.title}</h2>
+                </div>
+                <div class="info_left_photos">
+                    <div class="main-image">
+                        <img id="main-img"
+                             src="{:cmf_get_image_url($product.photos[0]['url'])}"
+                             alt="{$product.photos[0]['name']}">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <ul class="thumbnail-gallery-list">
+                            <foreach name="product.photos" item="vo">
+                                <li class="thumbnail-gallery-item active"
+                                    data-main-src="{:cmf_get_image_url($vo.url)}">
+                                    <img src="{:cmf_get_image_url($vo.url)}"
+                                         alt="{$vo.name}">
+                                </li>
+                            </foreach>
+                        </ul>
+                        <div class="proto-btn prev-btn">
+                            <img class="prev-img"
+                                 src="__TMPL__/public/assets/images/prev.png"
+                                 alt="prev">
+                            <img class="prev-img-active"
+                                 style="display: none"
+                                 src="__TMPL__/public/assets/images/prev-active.png"
+                                 alt="prev">
+                        </div>
+                        <div class="proto-btn next-btn">
+                            <img class="next-img"
+                                 src="__TMPL__/public/assets/images/next.png"
+                                 alt="next">
+                            <img class="next-img-active"
+                                 style="display: none"
+                                 src="__TMPL__/public/assets/images/next-active.png"
+                                 alt="next">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info_right_box">
+                <div class="info_right_mark">
+                    <span class="info_right_mark_title">
+                        Authentication mark:
+                    </span>
+                    <foreach name="product.authentication_mark" item="vo">
+                        <div class="info_right_mark_img">
+                            <img src="{:cmf_get_image_url($vo.url)}" alt="{$vo.name}">
+                        </div>
+                    </foreach>
+                </div>
+
+                <div class="info_right_tips">
+                    The following options can be selected:
+                </div>
+                <div class="info_right_capacity">
+                    <div class="info_right_capacity_title">
+                        Lifting capacity:
+                    </div>
+                    <ul class="info_right_capacity_list">
+                        <foreach name="product.lifting_capacity" item="vo">
+                            <li class="info_right_capacity_list_item {$key==0 ? 'active' : ''}" data-key="{$key}">
+                                {$vo}
+                            </li>
+                        </foreach>
+                    </ul>
+                    <div class="clear_both"></div>
+
+
+                    <div class="info_right_height">
+                        <div class="info_right_height_title">
+                            Lifting height:
+                        </div>
+                        <div class="slider-container">
+                            <div class="dual-range-slider">
+                                <div id="minHandle"
+                                     class="handle">
+                                    <div class="handle_text minHandle_text">
+                                        <span id="minValue">{$product.min_lifting_height}</span>m
+                                        <div class="handle_text_arrow"></div>
+                                    </div>
+                                </div>
+                                <div id="maxHandle"
+                                     class="handle">
+                                    <div class="handle_text maxHandle_text">
+                                        <span id="maxValue">{$product.max_lifting_height}</span>m
+                                        <div class="handle_text_arrow"></div>
+                                    </div>
+                                </div>
+                                <div class="range-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear_both"></div>
+
+                    <if condition="$product.min_span!=0 && $product.max_span!=0">
+                        <div class="info_right_span">
+                            <div class="info_right_span_title">
+                                Span:
+                            </div>
+                            <div class="slider-container_span">
+                                <div class="dual-range-slider_span">
+                                    <div id="minSpanHandle"
+                                         class="handle_span">
+                                        <div class="handle_span_text minHandle_span_text">
+                                            <span id="minSpanValue">{$product.min_span}</span>m
+                                            <div class="handle_span_text_arrow"></div>
+                                        </div>
+                                    </div>
+                                    <div id="maxSpanHandle"
+                                         class="handle_span">
+                                        <div class="handle_span_text maxHandle_span_text">
+                                            <span id="maxSpanValue">{$product.max_span}</span>m
+                                            <div class="handle_span_text_arrow"></div>
+                                        </div>
+                                    </div>
+                                    <div class="range-bar_span"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear_both"></div>
+                    </if>
+
+                    <div class="info_voltage">
+                        <div class="info_voltage_title">
+                            Voltage/Hertz:
+                        </div>
+                        <div class="info_voltage_content">
+                            <select class="info_select info_voltage_select" aria-label="info_voltage_select">
+                                <foreach name="product_setting.operating_voltage" item="vo">
+                                    <option value="{$vo}">{$vo}</option>
+                                </foreach>
+                            </select>
+                            <select class="info_select info_hertz_select" aria-label="info_hertz_select">
+                                <foreach name="product_setting.operating_hertz" item="vo">
+                                    <option value="{$vo}">{$vo}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clear_both"></div>
+
+                    <div class="info_right_job">
+                        <div class="info_right_job_title">
+                            Job level:
+                        </div>
+                        <ul class="info_right_job_list">
+                            <foreach name="product.job_level" item="vo">
+                                <li class="info_right_job_list_item {$key==0 ? 'active' : ''}"
+                                    data-key="{$key}">
+                                    {$vo}
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                    <div class="clear_both"></div>
+
+                    <div class="info_available">
+                        <div class="info_available_title">
+                            Sling available:
+                        </div>
+                        <ul class="info_available_list">
+                            <foreach name="product.sling_available" item="vo">
+                                <li class="info_available_list_item"
+                                    data-key="{$key}">
+                                    <img src="{:cmf_get_image_url($vo.url)}"
+                                         class="available_img"
+                                         alt="available_img">
+                                    <img src="{:cmf_get_image_url($vo.active_url)}"
+                                         class="available_img_active"
+                                         alt="available_img_active">
+                                    <span class="info_available_list_item_title">{$vo.name}</span>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div class="info_right_apply">
+                        <span class="info_right_apply_title">Apply: </span>
+                        {$product.industry}
+                    </div>
+
+                    <div class="info_btn_wrap">
+                        <div class="info_btn" id="inquiry">
+                            <img src="__TMPL__/public/assets/images/submit.png"
+                                 data-unactive_img="__TMPL__/public/assets/images/submit.png"
+                                 data-active_img="__TMPL__/public/assets/images/submit-active.png" alt="submit">
+                        </div>
+                        <div class="info_btn">
+                            <img src="__TMPL__/public/assets/images/consult.png"
+                                 data-unactive_img="__TMPL__/public/assets/images/consult.png"
+                                 data-active_img="__TMPL__/public/assets/images/consult-active.png" alt="consult">
+                        </div>
+                        <notempty name="product.file">
+                            <div class="info_btn" id="download"
+                                 data-href="{:cmf_get_file_download_url($product.file.url)}">
+                                <img src="__TMPL__/public/assets/images/catalogue.png"
+                                     data-unactive_img="__TMPL__/public/assets/images/catalogue.png"
+                                     data-active_img="__TMPL__/public/assets/images/catalogue-active.png"
+                                     alt="catalogue">
+                            </div>
+                        </notempty>
+                    </div>
+                </div>
+            </div>
+            <div class="clear_both"></div>
+
+            <!--推荐产品-->
+            <div class="related_products clearfix">
+                <div class="content-title margin80">
+                    <div class="content-title-line"></div>
+                    <div class="content-title-text"><i>PRODUCT RECOMMENDATION</i></div>
+                </div>
+                <div class="related_products_list">
+                    <ul class="clearfix">
+                        <foreach name="recommended_list" item="vo">
+                            <li class="related_products_list_item"
+                                onclick="location.href='{:cmf_url(\"portal/index/product_info\",array(\"id\"=>$vo[\"id\"]))}'">
+                            <div class="related_products_img_wrap">
+                                <img src="{:cmf_get_image_url($vo.thumbnail)}" alt="{$vo.title}">
+                            </div>
+                            <div class="related_products_list_item_title">
+                                {$vo.title}
+                            </div>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+
+                <div class="product-line">
+                    <ul>
+                        <if condition="count($recommended_list) gt 4">
+                            <li class="product-line-item active"></li>
+                            <li class="product-line-item"></li>
+                            <if condition="count($recommended_list) gt 8">
+                                <li class="product-line-item"></li>
+                                <if condition="count($recommended_list) gt 12">
+                                    <li class="product-line-item"></li>
+                                    <if condition="count($recommended_list) gt 16">
+                                        <li class="product-line-item"></li>
+                                    </if>
+                                </if>
+                            </if>
+                        </if>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info_content">
+                <ul class="info_content_title">
+                    <li class="info_content_item active">
+                        Product overview
+                    </li>
+                    <li class="info_content_item">
+                        Application scenario
+                    </li>
+                    <li class="info_content_item">
+                        certificate
+                    </li>
+                    <li class="info_content_item">
+                        case
+                    </li>
+                </ul>
+                <div class="info_content_content">
+                    <div class="info_content_content_item">
+                        {$product.overview}
+                    </div>
+                    <div class="info_content_content_item"
+                         style="display: none;">
+                        {$product.scenario}
+                    </div>
+                    <div class="info_content_content_item"
+                         style="display: none;">
+                        <ul class="info_content_content_certificate">
+                            <foreach name="product.certificate" item="vo">
+                                <li class="info_content_content_certificate_item">
+                                    <div class="certificate_wrap">
+                                        <img src="{:cmf_get_image_url($vo.url)}"
+                                             alt="{$vo.name}" title="{$vo.name}"></div>
+                                    <div class="info_content_content_certificate_item_title">
+                                        {$vo.name}
+                                    </div>
+                                </li>
+                            </foreach>
+                            <div class="clear_both"></div>
+                        </ul>
+                    </div>
+                    <div class="info_content_content_item"
+                         style="display: none;">
+                        <ul class="info_content_content_case">
+                            <foreach name="product.case" item="vo">
+                                <li class="info_content_content_case_item">
+                                    <div class="case_wrap">
+                                        <img src="{:cmf_get_image_url($vo.url)}"
+                                             alt="{$vo.name}" title="{$vo.name}"></div>
+                                    <div class="info_content_content_case_item_title">
+                                        {$vo.name}
+                                    </div>
+                                </li>
+                            </foreach>
+                            <div class="clear_both"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <include file="public@foot"/>
+</div>
+<!--弹窗-->
+<div class="popover_wrap" style="display: none">
+    <div class="popover_container">
+        <div class=popover_close>
+            <img src="__TMPL__/public/assets/images/close.png" alt="close">
+        </div>
+        <div class="popover_content">
+            <div class="popover_title">
+                <h2>Develop your lifting solution</h2>
+                <p class="popover_title_description">Contact us today by email at :<a href="mailto:{$site_info.email}">{$site_info.email}</a>,
+                    or fill out the form below.</p>
+            </div>
+            <div class="popover_form">
+                <form method="post">
+                    <div class="popover_form_name">
+                        <input id="popover-name" type="text" name="name" placeholder="Name:">
+                    </div>
+                    <div class="popover_form_phone">
+                        <input id="popover-phone" type="text" name="phone" placeholder="Phone / WhatsApp:">
+                    </div>
+                    <div class="popover_form_email">
+                        <input id="popover-email" type="text" name="email" placeholder="E-mail:">
+                    </div>
+                    <div class="popover_form_content">
+                        <textarea id="popover-content" name="content" placeholder="Message:"></textarea>
+                    </div>
+                    <div class="popover_form_submit">
+                        <input name="product_id" id="product-id" type="hidden" value="{$product.id}">
+                        <input name="file" id="file" type="hidden" value="">
+                        <button id="popover-submit" type="button">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

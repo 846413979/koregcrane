@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$site_info.site_name|default=''}</title>
+    <meta name="keywords" content="{$site_info.site_name|default=''}">
+    <meta name="description" content="{$site_info.site_name|default=''}">
+    <include file="public@head"/>
+    <link href="__TMPL__/public/assets/css/create.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__TMPL__/public/assets/js/create.js"></script>
+</head>
+<body>
+<div class="main">
+    <include file="public@nav"/>
+
+    <include file="public@banner"/>
+
+    <div class="main-content">
+        <div class="content-location">
+            <img class="content-location-img" src="__TMPL__/public/assets/images/location2.webp" alt="location">
+            <div class="content-location-text">
+                <a href="/">Home</a> / <a href="{:cmf_url('portal/index/intelligent')}">Innovation & Manufacturing</a> /
+                Intelligent
+            </div>
+        </div>
+        <div class="content-line"></div>
+
+        <div class="content">
+            <div class="content-title margin80">
+                <div class="content-title-line"></div>
+                <div class="content-title-text"><i>INTELLIGENT</i></div>
+            </div>
+            <div class="intelligent-content">
+                <div class="intelligent-title">
+                    <ul class="clearfix">
+                        <foreach name="list" item="vo">
+                            <li class="intelligent-title-item {$key==0 ? 'active' : ''}">{$vo.name}</li>
+                        </foreach>
+                    </ul>
+                </div>
+                <foreach name="list" item="vo" key="key">
+                    <div class="intelligent-content-list {$key==0 ? 'active' : ''}">
+                        <ul class="clearfix">
+                            <foreach name="vo.posts" item="v" key="k">
+                                <li class="intelligent-content-item">
+                                    <div class="intelligent-content-item-img">
+                                        <img src="{:cmf_get_image_url($v.more.thumbnail)}" alt="{$v.post_title}">
+                                    </div>
+                                    <div class="intelligent-content-item-title">
+                                        {$v.post_title}
+                                    </div>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+
+    <include file="public@foot"/>
+</div>
+</body>
+</html>

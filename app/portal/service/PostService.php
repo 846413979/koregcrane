@@ -21,9 +21,9 @@ class PostService
      * @return \think\Paginator
      * @throws \think\exception\DbException
      */
-    public function adminArticleList($filter)
+    public function adminArticleList($filter,$type = 1)
     {
-        return $this->adminPostList($filter);
+        return $this->adminPostList($filter,$type);
     }
 
     /**
@@ -34,7 +34,7 @@ class PostService
      */
     public function adminPageList($filter)
     {
-        return $this->adminPostList($filter, true);
+        return $this->adminPostList($filter, 2);
     }
 
     /**
@@ -44,7 +44,7 @@ class PostService
      * @return \think\Paginator
      * @throws \think\exception\DbException
      */
-    public function adminPostList($filter, $isPage = false)
+    public function adminPostList($filter, $isPage = 1)
     {
 
         $field = 'a.*,u.user_login,u.user_nickname,u.user_email';
@@ -83,11 +83,8 @@ class PostService
                     $query->where('a.post_title', 'like', "%$keyword%");
                 }
 
-                if ($isPage) {
-                    $query->where('a.post_type', 2);
-                } else {
-                    $query->where('a.post_type', 1);
-                }
+
+                $query->where('a.post_type', $isPage);
             })
             ->order('update_time', 'DESC')
             ->paginate(10);
@@ -275,20 +272,14 @@ class PostService
 
         $where = [
             'post_type'   => 2,
-            'post_status' => 1,
             'delete_time' => 0,
             'id'          => $pageId
         ];
 
-        $wherePublishedTime = function (Query $query) {
-            $query->where('published_time', '>', 0)
-                ->where('published_time', '<', time());
-        };
 
         $portalPostModel = new PortalPostModel();
         $page            = $portalPostModel
             ->where($where)
-            ->where($wherePublishedTime)
             ->find();
 
         return $page;

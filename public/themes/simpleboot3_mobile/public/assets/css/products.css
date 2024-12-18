@@ -1,0 +1,97 @@
+
+.main-content .products-content-select{
+    width: 35rem;
+    margin: 2rem auto;
+}
+.main-content .products-content-select .product_select select{
+    width: 20rem;
+    height: 4rem;
+    border: 0.1rem solid #DCDCDC;
+    border-radius: 0.4rem;
+    margin-bottom: 2rem;
+    font-family: Roboto, Roboto;
+    font-size: 1.4rem;
+    color: #999999;
+    line-height: 2.8rem;
+    padding-left: 2rem;
+    float: left;
+}
+.main-content .products-content-select .tonnage_select select{
+    width: 13rem;
+    margin-left: 2rem;
+}
+.product_industry .product_industry_title{
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #333333;
+    line-height: 2rem;
+    font-style: italic;
+}
+.product_industry .product_industry_list{
+    margin-top: 2rem;
+}
+.product_industry .product_industry_list .product_industry_list_item{
+    width: 16.5rem;
+    height: 4rem;
+    background: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid #DCDCDC;
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+    font-family: Roboto, Roboto;
+    font-size: 1.4rem;
+    color: #999999;
+    line-height: 4rem;
+    text-align: center;
+}
+.product_industry .product_industry_list .product_industry_list_item:nth-child(2n){
+    margin-right: 0;
+}
+.product_industry .product_industry_list .product_industry_list_item.active{
+    border: 1px solid #003F9B;
+    color: #003F9B;
+}
+
+.products-content{
+    width: 35rem;
+    margin: 2rem auto;
+}
+.products-content .products-content-list-item{
+    width: 17rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    float: left;
+    margin-left: 1rem;
+}
+.products-content .products-content-list-item:nth-child(2n+1){
+    margin-left: 0;
+}
+.products-content.products-content-list-item .products-content-list-item-img{
+    width: 17rem;
+    height: 17rem;
+    overflow: hidden;
+}
+.products-content .products-content-list-item .products-content-list-item-img img{
+    width: 17rem;
+    height: 17rem;
+}
+.products-content .products-content-list-item .products-content-list-item-title{
+    width: 17rem;
+    height: 4.9rem;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #333333;
+    line-height: 2.2rem;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+    padding-top: 0.5rem;
+}
+.products-content-right-page{
+    display: flex;
+    justify-content: center;
+}

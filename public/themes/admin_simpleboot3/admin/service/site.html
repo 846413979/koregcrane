@@ -1,0 +1,148 @@
+<include file="public@header"/>
+<style type="text/css">
+    .pic-list li {
+        margin-bottom: 5px;
+    }
+
+    .btn-cancel-thumbnail {
+        margin-top: 5px;
+    }
+
+    #photos, #files {
+        margin-bottom: 0;
+    }
+</style>
+<script type="text/html" id="company-item-tpl">
+    <li id="saved-company{id}">
+        <input id="company-{id}" type="hidden" name="company_urls[]" value="{filepath}">
+        <input class="form-control" id="company-{id}-name" type="text" name="company_names[]" value="{name}"
+               style="width: 400px;" title="图片名称">
+        <img id="company-{id}-preview" src="{url}" style="height:34px;width: 44px;"
+             onclick="imagePreviewDialog(this.src);">
+        <a class="btn btn-default" href="javascript:uploadOneImage('图片上传','#company-{id}');"><i class="fa fa-upload fa-fw"></i></a>
+        <a class="btn btn-danger" href="javascript:(function(){$('#saved-company{id}').remove();})();"><i class="fa fa-trash fa-fw"></i></a>
+        <a class="btn btn-success" href="javascript:(function(){$('#saved-company{id}').before($('#saved-company{id}').next());})();"><i class="fa fa-arrow-down fa-fw"></i></a>
+    </li>
+</script>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab">服务设置</a></li>
+    </ul>
+    <form class="form-horizontal js-ajax-form margin-top-20" role="form" action="{:url('Service/sitePost')}"
+          method="post">
+        <div class="tabbable">
+            <div class="tab-content">
+                <div class="form-group">
+                    <label for="input-internationalization" class="col-sm-2 control-label"><span
+                            class="form-required">*</span>国际化描述</label>
+                    <div class="col-md-6 col-sm-10">
+                        <textarea class="form-control" id="input-internationalization" name="internationalization" style="height: 100px;"
+                                  placeholder="请填写描述">{$site_info.internationalization|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">国际化图片</label>
+                    <div class="col-md-6 col-sm-10">
+                        <input type="hidden" name="internationalization_image" id="internationalization_image"
+                               value="{$site_info.internationalization_image|default=''}">
+                        <a href="javascript:uploadOneImage('图片上传','#internationalization_image');">
+                            <if condition="empty($site_info.internationalization_image)">
+                                <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                     id="internationalization_image-preview"
+                                     width="135" style="cursor: pointer"/>
+                                <else/>
+                                <img src="{:cmf_get_image_preview_url($site_info.internationalization_image)}"
+                                     id="internationalization_image-preview"
+                                     width="135" style="cursor: pointer"/>
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-sm" onclick="$('#internationalization_image-preview').attr('src','__TMPL__/public/assets/images/default-thumbnail.png');$('#internationalization_image').val('');return false;"
+                               value="取消图片">
+                        <p class="help-block">建议尺寸：1440*527</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        地区
+                    </label>
+                    <div class="col-md-8 col-sm-10">
+                        <ul id="areas" class="pic-list list-unstyled form-inline">
+                            <notempty name="site_info.areas">
+                                <foreach name="site_info.areas" item="vo">
+                                    <li id="saved-areas{$key}">
+                                        地区名称：<input class="form-control" type="text"
+                                               name="area[]"
+                                               value="{$vo.area|default=''}" style="width: 300px;">
+                                        &nbsp;&nbsp;&nbsp;
+                                        国家数量：<input class="form-control" type="number"
+                                                        name="country[]"
+                                                        value="{$vo.country|default=''}" style="width: 100px;" >
+                                        &nbsp;&nbsp;&nbsp;
+                                        颜色：<input class="form-control" type="text"
+                                                    name="color[]"
+                                                    value="{$vo.color|default=''}" style="width: 150px;" >
+                                        <a class="btn btn-danger" href="javascript:(function(){$('#saved-areas{$key}').remove();})();"><i class="fa fa-trash fa-fw"></i></a>
+                                    </li>
+                                </foreach>
+                            </notempty>
+                        </ul>
+                        <a href="javascript:areas_add();" class="btn btn-default">添加地区</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        合作公司
+                    </label>
+                    <div class="col-md-6 col-sm-10">
+                        <ul id="company" class="pic-list list-unstyled form-inline">
+                            <notempty name="site_info.companies">
+                                <foreach name="site_info.companies" item="vo">
+                                    <php>$img_url=cmf_get_image_preview_url($vo['url']);</php>
+                                    <li id="saved-company{$key}">
+                                        <input id="company-{$key}" type="hidden" name="company_urls[]"
+                                               value="{$vo.url}">
+                                        <input class="form-control" id="company-{$key}-name" type="text"
+                                               name="company_names[]"
+                                               value="{$vo.name|default=''}" style="width: 400px;" title="图片名称">
+                                        <img id="company-{$key}-preview"
+                                             src="{:cmf_get_image_preview_url($vo['url'])}"
+                                             style="height:34px;width: 44px;"
+                                             onclick="parent.imagePreviewDialog(this.src);">
+                                        <a class="btn btn-default"  href="javascript:uploadOneImage('图片上传','#company-{$key}');"><i class="fa fa-upload fa-fw"></i></a>
+                                        <a class="btn btn-danger"  href="javascript:(function(){$('#saved-company{$key}').remove();})();"><i class="fa fa-trash fa-fw"></i></a>
+                                        <a class="btn btn-success"  href="javascript:(function(){$('#saved-company{$key}').before($('#saved-company{$key}').next());})();"><i class="fa fa-arrow-down fa-fw"></i></a>
+                                    </li>
+                                </foreach>
+                            </notempty>
+                        </ul>
+                        <a href="javascript:uploadMultiImage('图片上传','#company','company-item-tpl');"
+                           class="btn btn-default">选择图片</a>
+                        <p class="help-block">建议尺寸：240*240</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary js-ajax-submit" data-refresh="0">
+                            {:lang('SAVE')}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript" src="__STATIC__/js/admin.js?v={$_static_version}"></script>
+<script type="text/javascript">
+    function areas_add() {
+        var timestamp = new Date().getTime();
+        var randomNum = Math.random();
+        var scaledRandomNum = Math.floor(randomNum * 1000);
+        var id = timestamp.toString() + scaledRandomNum.toString();
+        $('#areas').append('<li id="saved-areas'+id+'">地区名称：<input class="form-control" type="text" name="area[]" value="" style="width: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国家数量：<input class="form-control" type="number" name="country[]" value="" style="width: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;颜色：<input class="form-control" type="text" name="color[]" value="" style="width: 150px;"><a class="btn btn-danger" href="javascript:(function(){$(\'#saved-areas'+id+'\').remove();})();"><i class="fa fa-trash fa-fw"></i></a></li>');
+    }
+</script>
+</body>
+</html>
