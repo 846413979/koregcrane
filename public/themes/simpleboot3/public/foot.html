@@ -13,7 +13,7 @@
             <div class="footer-contact-item">
                 <img src="__TMPL__/public/assets/images/email.webp" alt="email">
                 <p class="footer-contact-item-content">
-                    <a href="mailto:{$site_info.email}">{$site_info.email}</a>
+                    <a onclick="gtag_report_conversion('mailto:{$site_info.email}');">{$site_info.email}</a>
                 </p>
             </div>
             <div class="footer-contact-item">
@@ -23,7 +23,7 @@
             <div class="footer-contact-item">
                 <img src="__TMPL__/public/assets/images/phone.webp" alt="phone">
                 <p class="footer-contact-item-content">
-                    <a href="tel:{$site_info.sale_tel}">{$site_info.sale_tel}</a>
+                    <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');">{$site_info.sale_tel}</a>
                 </p>
             </div>
             <div class="footer-contact-item">
@@ -41,7 +41,7 @@
             </div>
             <div class="footer-contact-social">
                 <a href="{$site_info.linkedin|default='javascript:;'}"><img src="__TMPL__/public/assets/images/ins.webp"
-                                                                            alt="ins"></a>
+                                                                            alt="linkedin"></a>
                 <a href="{$site_info.facebook|default='javascript:;'}"><img
                         src="__TMPL__/public/assets/images/facebook.webp" alt="facebook"></a>
                 <a href="{$site_info.youtube|default='javascript:;'}"><img
@@ -111,8 +111,7 @@
             <img src="__TMPL__/public/assets/images/whatsapp.png" alt="whatsapp" title="whatsapp">
             <div class="right_fix_box_connect">
                 <p>WhatsApp:</p>
-                <p class="right_fix_box_connect_text"><a href="https://api.whatsapp.com/send?phone={$cleanNumber}"
-                                                         target="_blank">{$site_info.whatsapp}</a></p>
+                <p class="right_fix_box_connect_text"><a onclick="gtag_report_conversion('https://api.whatsapp.com/send?phone={$cleanNumber}');" target="_blank">{$site_info.whatsapp}</a></p>
                 <div class="right_fix_box_connect_arrow"></div>
             </div>
         </div>
@@ -120,7 +119,7 @@
             <img src="__TMPL__/public/assets/images/email.png" alt="email" title="email">
             <div class="right_fix_box_connect">
                 <p>Email:</p>
-                <p class="right_fix_box_connect_text"><a href="mailto:{$site_info.email}">{$site_info.email}</a></p>
+                <p class="right_fix_box_connect_text"><a onclick="gtag_report_conversion('mailto:{$site_info.email}');">{$site_info.email}</a></p>
                 <div class="right_fix_box_connect_arrow"></div>
             </div>
         </div>
@@ -129,3 +128,51 @@
         </div>
     </div>
 </div>
+
+
+<!--弹窗-->
+<div class="popover_wrap" style="display: none">
+    <div class="popover_container">
+        <div class=popover_close>
+            <img src="__TMPL__/public/assets/images/close.png" alt="close">
+        </div>
+        <div class="popover_content">
+            <div class="popover_title">
+                <h2>Develop your lifting solution</h2>
+                <p class="popover_title_description">Contact us today by email at :<a  onclick="gtag_report_conversion('mailto:{$site_info.email}');">{$site_info.email}</a>,
+                    or fill out the form below.</p>
+            </div>
+            <div class="popover_form">
+                <form method="post">
+                    <div class="popover_form_name">
+                        <input id="popover-name" type="text" name="name" placeholder="Name:">
+                    </div>
+                    <div class="popover_form_phone">
+                        <input id="popover-phone" type="text" name="phone" placeholder="Phone / WhatsApp:">
+                    </div>
+                    <div class="popover_form_email">
+                        <input id="popover-email" type="text" name="email" placeholder="E-mail:">
+                    </div>
+                    <div class="popover_form_content">
+                        <textarea id="popover-content" name="content" placeholder="Message:"></textarea>
+                    </div>
+                    <div class="popover_form_submit">
+                        <input name="product_id" id="product-id" type="hidden" value="{$product.id|default=''}">
+                        <input name="file" id="file" type="hidden" value="">
+                        <input type="hidden" name="feedback_type" id="feedback_type" value="2">
+                        <button id="popover-submit" type="button">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<notempty name="site_info.salesiq">
+    {:htmlspecialchars_decode($site_info.salesiq)}
+</notempty>
+
+<notempty name="site_info.google_tag_body">
+    {:htmlspecialchars_decode($site_info.google_tag_body)}
+</notempty>

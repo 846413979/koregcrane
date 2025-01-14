@@ -485,9 +485,9 @@ a:focus {
     background: #1562C5;
     border-radius: 40px 40px 40px 40px;
     position: fixed;
-    right: 20px;
+    left: 20px;
     top: 50%;
-    margin-top: -40px;
+    margin-top: -141px;
     z-index: 999;
 }
 
@@ -527,19 +527,15 @@ a:focus {
 
 .right_fix .right_fix_connect .right_fix_box .right_fix_box_connect {
     display: none;
-    width: 272px;
+    width: 202px;
     height: 80px;
     position: absolute;
-    left: -276px;
+    left: 86px;
     top: 0;
     background: #1562C5;
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.16);
 }
 
-.right_fix .right_fix_connect .right_fix_box:first-child .right_fix_box_connect {
-    width: 202px;
-    left: -206px;
-}
 
 .right_fix .right_fix_connect .right_fix_box .right_fix_box_connect p {
     font-family: DIN, DIN;
@@ -569,9 +565,9 @@ a:focus {
 .right_fix .right_fix_connect .right_fix_box .right_fix_box_connect .right_fix_box_connect_arrow {
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 15px solid #1562C5;
+    border-right: 15px solid #1562C5;
     position: absolute;
-    right: -11px;
+    left: -11px;
     width: 0;
     height: 0;
     top: 26px;

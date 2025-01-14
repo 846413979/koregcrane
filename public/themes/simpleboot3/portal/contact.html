@@ -35,7 +35,7 @@
                     <div class="contact-content-left-company">{$site_info.site_name|default=''}</div>
                     <div class="contact-content-left-text contact-content-left-email">
                         <img src="__TMPL__/public/assets/images/email2.webp" alt="">
-                        <a href="mailto:{$site_info.email}"><p>{$site_info.email|default=''}</p></a>
+                        <a onclick="gtag_report_conversion('mailto:{$site_info.email}');"><p>{$site_info.email|default=''}</p></a>
                     </div>
                     <div class="contact-content-left-text contact-content-left-address">
                         <img src="__TMPL__/public/assets/images/address.webp" alt="">
@@ -43,7 +43,14 @@
                     </div>
                     <div class="contact-content-left-text">
                         <img src="__TMPL__/public/assets/images/web_site.webp" alt="">
-                        <a href="tel:{$site_info.sale_tel}"><p>{$site_info.web_site|default=''}</p></a>
+                        <php>
+                            if (strpos($site_info['web_site'],'http')){
+                            $web_site_href = $site_info['web_site'];
+                            }else{
+                            $web_site_href = 'https://'.$site_info['web_site'];
+                            }
+                        </php>
+                        <a href="{$web_site_href}" target="_blank"><p>{$site_info.web_site|default=''}</p></a>
                     </div>
                 </div>
                 <div class="contact-content-right">
@@ -60,7 +67,7 @@
                     <div class="contact-content-right-line"></div>
                     <div class="contact-content-right-text contact-content-right-telephone">
                         <span>Cooperative telephone</span>
-                        <a href="tel:{$site_info.sale_tel}"><span>{$site_info.sale_tel|default=''}</span></a>
+                        <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');"><span>{$site_info.sale_tel|default=''}</span></a>
                     </div>
                     <div class="contact-content-right-service_time">
                         <span>Service hours: Monday to Sunday 0:00-24:00</span>
@@ -75,12 +82,12 @@
                     <div class="contact-message-left-line"></div>
                     <div class="contact-message-left-contact">
                         <span>Cooperative telephone</span>
-                        <a href="tel:{$site_info.sale_tel}"><span>{$site_info.sale_tel|default=''}</span></a>
+                        <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');"><span>{$site_info.sale_tel|default=''}</span></a>
                     </div>
                     <div class="contact-message-left-vertical-line"></div>
                     <div class="contact-message-left-contact contact-message-left-email">
                         <span>Email</span>
-                        <a href="mailto:{$site_info.email}"><span>{$site_info.email|default=''}</span></a>
+                        <a onclick="gtag_report_conversion('mailto:{$site_info.email}');"><span>{$site_info.email|default=''}</span></a>
                     </div>
                     <div class="clear_both"></div>
                     <div class="contact-message-left-line"></div>

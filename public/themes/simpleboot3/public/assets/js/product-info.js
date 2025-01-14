@@ -390,93 +390,20 @@ $(document).ready(function () {
         $('.next-img').show()
         $('.next-img-active').hide()
     })
-
-    $('#feedback-submit').click(function () {
-        let name = $('#feedback-name').val();// 姓名
-        let phone = $('#feedback-phone').val();// 手机号
-        let email = $('#feedback-email').val();// 邮箱
-        let content = $('#feedback-content').val();// 内容
-
-        let data = {
-            name: name,
-            phone: phone,
-            email: email,
-            content: content,
-        }
-        feedback(data);
+    
+    
+     $('#inquiry').click(function (){
+        $('#feedback_type').val(1);
+        $('.popover_wrap').show();
     })
 
-    $('#popover-submit').click(function () {
-        let name = $('#popover-name').val();// 姓名
-        let phone = $('#popover-phone').val();// 手机号
-        let email = $('#popover-email').val();// 邮箱
-        let content = $('#popover-content').val();// 内容
-
-        let data = {
-            name: name,
-            phone: phone,
-            email: email,
-            content: content,
-        }
-        feedback(data);
+    $('#download').click(function (){
+        $('#feedback_type').val(1);
+        $('#file').val($(this).data('href'));
+        $('.popover_wrap').show();
     })
 
-    function feedback(data) {
-        let product_id = $('#product-id').val(); // 产品id
-        let lifting_capacity = []; // 起重量
-        $('.info_right_capacity_list_item.active').each(function () {
-            var key = $(this).data('key');
-            lifting_capacity.push(key);
-        })
-        let min_height = $('#minValue').text();
-        let max_height = $('#maxValue').text();
-        let height = min_height + ',' + max_height; // 起重高度
-        let min_span = $('#minSpanValue').text();
-        let max_span = $('#maxSpanValue').text();
-        let span = min_span + ',' + max_span; // 跨度
-        let voltage = $('.info_voltage_select').val(); // 工作电压
-        let hertz = $('.info_hertz_select').val(); // 工作频率
-        let job_level = []; // 工作等级
-        $('.info_right_job_list_item.active').each(function () {
-            var key = $(this).data('key');
-            job_level.push(key);
-        })
-        let sling_available = []; // 吊具
-        $('.info_available_list_item.active').each(function () {
-            var key = $(this).data('key');
-            sling_available.push(key);
-        })
-        data.product_id = product_id;
-        data.lifting_capacity = lifting_capacity;
-        data.lifting_height = height;
-        data.span = span;
-        data.operating_voltage = voltage;
-        data.operating_herts = hertz;
-        data.job_level = job_level;
-        data.sling_available = sling_available;
-        data.type = 1;
-        let file_url = $('#file').val();
-        $.ajax({
-            url: '/portal/index/inquiry',
-            type: 'POST',
-            data: data,
-            dataType: 'json',
-            success: function (res) {
-                if (res.code == 1) {
-                    alert('submit success');
-                    $('.popover_wrap').hide();
-                    if (file_url !== '') {
-                        $('#file').val('');
-                        window.location.href = file_url;
-                    }
-                } else {
-                    alert('submit failed:' + res.msg);
-                }
-            }
-        })
-    }
-
-
+    
     $('.info_btn img').hover(function () {
         var active_img = $(this).data('active_img');
         $(this).attr('src', active_img);

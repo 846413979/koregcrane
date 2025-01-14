@@ -298,16 +298,13 @@
             <div class="info_content">
                 <ul class="info_content_title">
                     <li class="info_content_item active">
-                        Product overview
+                        Product Overview
                     </li>
                     <li class="info_content_item">
-                        Application scenario
+                        Application Scenario
                     </li>
                     <li class="info_content_item">
-                        certificate
-                    </li>
-                    <li class="info_content_item">
-                        case
+                        Certificate
                     </li>
                 </ul>
                 <div class="info_content_content">
@@ -334,22 +331,6 @@
                             <div class="clear_both"></div>
                         </ul>
                     </div>
-                    <div class="info_content_content_item"
-                         style="display: none;">
-                        <ul class="info_content_content_case">
-                            <foreach name="product.case" item="vo">
-                                <li class="info_content_content_case_item">
-                                    <div class="case_wrap">
-                                        <img src="{:cmf_get_image_url($vo.url)}"
-                                             alt="{$vo.name}" title="{$vo.name}"></div>
-                                    <div class="info_content_content_case_item_title">
-                                        {$vo.name}
-                                    </div>
-                                </li>
-                            </foreach>
-                            <div class="clear_both"></div>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -359,10 +340,6 @@
     <include file="public@foot"/>
 
 </div>
-
-
-<!--弹窗-->
-<include file="public@popover"/>
 
 </body>
 </html>

@@ -18,8 +18,9 @@ function submit() {
         dataType: 'json',
         success: function (res) {
             if (res.code == 1) {
+                //谷歌点击转化
+                gtag_report_conversion();
                 alert('submit success');
-                $('.popover_wrap').hide();
             } else {
                 alert('submit failed:' + res.msg);
             }
