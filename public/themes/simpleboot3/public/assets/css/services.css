@@ -11,14 +11,12 @@
 }
 
 .content-img {
-    width: 1440px;
-    height: 527px;
+    width: 100%;
     margin-top: 30px;
 }
 
 .content-img img {
-    width: 1440px;
-    height: 527px;
+    width: 100%;
 }
 
 
@@ -51,7 +49,7 @@
 }
 
 .market-container .market-list-item .market-line {
-    width: 285px;
+    width: 100%;
     height: 2px;
     background: #FFFFFF;
     margin-top: 40px;
@@ -84,6 +82,39 @@
     text-transform: none;
     float: right;
 }
+
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .market-container .market-list-item {
+        width: 255px;
+        padding: 30px 10px 0;
+    }
+    .market-container .market-list-item .market-name{
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .market-container .market-list-item {
+        width: 192px;
+        padding: 30px 10px 0;
+        margin-right: 10px;
+        height: 200px;
+    }
+    .market-container .market-list-item .market-name{
+        font-size: 16px;
+        text-align: center;
+        line-height: 32px;
+        height: 60px;
+    }
+    .market-container .market-list-item .market-line{
+        margin-top: 20px;
+    }
+    .market-container .market-list-item .market-country .market-country-left{
+        font-size: 14px
+    }
+}
+
+
 
 .companies-title {
     width: 1440px;
@@ -140,6 +171,33 @@
     transform: scale(1.2);
 }
 
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .companies .companies-list-item{
+        width: 184px;
+        height: 184px;
+        margin-right: 40px;
+        margin-bottom: 40px;
+    }
+    .companies .companies-list-item img {
+        width: 182px;
+        height: 182px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .companies .companies-list-item{
+        width: 144px;
+        height: 144px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    .companies .companies-list-item img {
+        width: 142px;
+        height: 142px;
+    }
+}
+
+
 
 .service-content {
     margin-top: 60px;
@@ -166,6 +224,10 @@
     justify-content: center;
 }
 
+.service-content .service-content-left img, .service-content .service-content-right img{
+    width: 100%;
+    height: 100%;
+}
 .service-content .service-content-right {
     margin-left: 60px;
 }
@@ -177,6 +239,40 @@
 
 .service-content .service-content-text {
     margin-top: 40px;
+}
+
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .service-content{
+        margin-top: 40px;
+    }
+    .service-content .service-content-left, .service-content .service-content-right {
+        width: 520px;
+        height: 345px;
+    }
+    .service-content .service-content-right {
+        margin-left: 40px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .service-content{
+        margin-top: 20px;
+    }
+    .service-content .service-content-left, .service-content .service-content-right {
+        width: 390px;
+        height: 259px;
+    }
+    .service-content .service-content-right {
+        margin-left: 20px;
+    }
+    .service-content .service-content-title{
+        font-size: 24px;
+    }
+    .service-content .service-content-text {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 24px;
+    }
 }
 
 
@@ -244,136 +340,5 @@
 .download_content_main_list_li_foot_eye {
     position: absolute;
     right: 30px;
-}
-
-/*弹窗*/
-.popover_wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 999;
-}
-
-.popover_wrap .popover_container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1212px;
-    height: 586px;
-    margin-top: -293px;
-    margin-left: -606px;
-    background: linear-gradient(180deg, #E6F1FF 0%, #FFFFFF 30%);
-    border-radius: 24px;
-    overflow: hidden;
-    z-index: 1000;
-}
-
-.popover_wrap .popover_container .popover_close {
-    float: right;
-    margin-right: 20px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-.popover_wrap .popover_container .popover_content {
-    width: 1050px;
-    margin-left: 80px;
-    margin-top: 60px;
-}
-
-.popover_wrap .popover_container .popover_content .popover_title h2 {
-    width: 100%;
-    font-family: Arial-BoldMT, Arial-BoldMT;
-    font-weight: bold;
-    font-size: 40px;
-    color: #333333;
-    line-height: 44px;
-    text-align: center;
-    font-style: normal;
-    text-transform: none;
-}
-
-.popover_wrap .popover_container .popover_content .popover_title .popover_title_description {
-    width: 100%;
-    height: 20px;
-    font-family: ArialMT, ArialMT;
-    font-weight: 400;
-    font-size: 20px;
-    color: #333333;
-    line-height: 20px;
-    text-align: center;
-    font-style: normal;
-    text-transform: none;
-    margin-top: 20px;
-}
-
-.popover_wrap .popover_container .popover_content .popover_title .popover_title_description a:hover {
-    color: #003F9B;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form {
-    width: 100%;
-    margin-top: 40px;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_name,
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone,
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_email {
-    float: left;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone,
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_email {
-    margin-left: 16px;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_name input,
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_phone input,
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_email input {
-    width: 336px;
-    height: 60px;
-    background: #FFFFFF;
-    border-radius: 30px 30px 30px 30px;
-    padding-left: 20px;
-    border: 1px solid #DCDCDC;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_content textarea {
-    width: 100%;
-    height: 190px;
-    margin-top: 20px;
-    background: #FFFFFF;
-    border-radius: 16px 16px 16px 16px;
-    font-family: Arial, Arial;
-    font-size: 16px;
-    color: #999999;
-    line-height: 32px;
-    padding: 10px 20px;
-    border: 1px solid #DCDCDC;
-    resize: none;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_submit {
-    width: 220px;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-
-.popover_wrap .popover_container .popover_content .popover_form .popover_form_submit button {
-    width: 220px;
-    height: 60px;
-    background: #003F9B;
-    border-radius: 30px 30px 30px 30px;
-    border-width: 0;
-    font-family: Arial, Arial;
-    font-weight: bold;
-    font-size: 16px;
-    color: #FFFFFF;
-    line-height: 0px;
-    font-style: normal;
-    text-transform: none;
 }
 

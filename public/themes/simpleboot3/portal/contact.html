@@ -25,79 +25,34 @@
         <div class="content-line"></div>
 
         <div class="content">
-            <div class="content-title margin80">
-                <div class="content-title-line"></div>
-                <div class="content-title-text"><i>CONTACT US</i></div>
-            </div>
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-left-title">GET A QUOTE</div>
+                    <div class="contact-left-content">
+                        <img src="__TMPL__/public/assets/images/quote-email.webp" alt="email">
+                        <a><p>{$site_info.email|default=''}</p></a>
+                    </div>
+                    <div class="contact-left-content">
+                        <img src="__TMPL__/public/assets/images/quote-location.webp" alt="location">
+                        <a><p>{$site_info.address|default=''}</p></a>
+                    </div>
+                    <div class="contact-left-content">
+                        <img src="__TMPL__/public/assets/images/quote-whatsapp.webp" alt="whatsapp">
+                        <a><p>{$site_info.whatsapp|default=''}</p></a>
+                    </div>
+                    <div class="contact-left-content">
+                        <img src="__TMPL__/public/assets/images/quote-tel.webp" alt="tel">
+                        <a><p>{$site_info.sale_tel|default=''}</p></a>
+                    </div>
+                </div>
 
-            <div class="contact-content clearfix">
-                <div class="contact-content-left">
-                    <div class="contact-content-left-company">{$site_info.site_name|default=''}</div>
-                    <div class="contact-content-left-text contact-content-left-email">
-                        <img src="__TMPL__/public/assets/images/email2.webp" alt="">
-                        <a onclick="gtag_report_conversion('mailto:{$site_info.email}');"><p>{$site_info.email|default=''}</p></a>
-                    </div>
-                    <div class="contact-content-left-text contact-content-left-address">
-                        <img src="__TMPL__/public/assets/images/address.webp" alt="">
-                        <p>{$site_info.address|default=''}</p>
-                    </div>
-                    <div class="contact-content-left-text">
-                        <img src="__TMPL__/public/assets/images/web_site.webp" alt="">
-                        <php>
-                            if (strpos($site_info['web_site'],'http')){
-                            $web_site_href = $site_info['web_site'];
-                            }else{
-                            $web_site_href = 'https://'.$site_info['web_site'];
-                            }
-                        </php>
-                        <a href="{$web_site_href}" target="_blank"><p>{$site_info.web_site|default=''}</p></a>
-                    </div>
-                </div>
-                <div class="contact-content-right">
-                    <div class="contact-content-right-text contact-content-right-whatsapp">
-                        <span>Whatsapp</span>
-                        <php>
-                            $cleanNumber = preg_replace('/[^0-9]/', '', $site_info['whatsapp']);
-                            if (strpos($cleanNumber, '0') === 0) {
-                            $cleanNumber = preg_replace('/^0+/', '', $cleanNumber);
-                            }
-                        </php>
-                        <a href="https://api.whatsapp.com/send?phone={$cleanNumber}" target="_blank"><span>{$site_info.whatsapp|default=''}</span></a>
-                    </div>
-                    <div class="contact-content-right-line"></div>
-                    <div class="contact-content-right-text contact-content-right-telephone">
-                        <span>Cooperative telephone</span>
-                        <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');"><span>{$site_info.sale_tel|default=''}</span></a>
-                    </div>
-                    <div class="contact-content-right-service_time">
-                        <span>Service hours: Monday to Sunday 0:00-24:00</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="contact-message clearfix">
-                <div class="contact-message-left">
-                    <div class="contact-message-left-title">ONLINE MESSAGE</div>
-                    <div class="contact-message-left-text">You can submit and send in the product related matters</div>
-                    <div class="contact-message-left-line"></div>
-                    <div class="contact-message-left-contact">
-                        <span>Cooperative telephone</span>
-                        <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');"><span>{$site_info.sale_tel|default=''}</span></a>
-                    </div>
-                    <div class="contact-message-left-vertical-line"></div>
-                    <div class="contact-message-left-contact contact-message-left-email">
-                        <span>Email</span>
-                        <a onclick="gtag_report_conversion('mailto:{$site_info.email}');"><span>{$site_info.email|default=''}</span></a>
-                    </div>
-                    <div class="clear_both"></div>
-                    <div class="contact-message-left-line"></div>
-                </div>
-                <div class="contact-message-right">
-                    <input name="name" class="contact-message-right-name" type="text" placeholder="Name:">
-                    <input name="phone" class="contact-message-right-phone" type="text" placeholder="Phone / Whatsapp:">
-                    <input name="email" class="contact-message-right-email" type="text" placeholder="E-mail:">
-                    <textarea name="message" class="contact-message-right-message" placeholder="Message:"></textarea>
-                    <div class="contact-message-right-btn" onclick="submit()">Submit</div>
+                <div class="quote">
+                    <input type="text" name="name" class="quote-name" placeholder="Name:">
+                    <input type="text" name="phone" class="quote-phone" placeholder="Phone / Whatsapp:">
+                    <input type="text" name="email" class="quote-email" placeholder="E-mail:">
+                    <textarea name="message" class="quote-message" placeholder="Message:"></textarea>
+                    <div class="quote-btn" onclick="submit()">SUBMIT</div>
                 </div>
             </div>
 

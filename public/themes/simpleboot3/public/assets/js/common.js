@@ -5,6 +5,8 @@ $(document).ready(function () {
         $(this).css('backgroundColor', '#fff');
         $(this).find('a.nav-title').css('color', '#333333')
         $(this).find('.nav-line').css('backgroundColor', '#000');
+        $(this).find('.top_contact_item_active').show();
+        $(this).find('.top_contact_item_default').hide();
     }, function () {
         if ($(window).scrollTop() !== 0) {
             return;
@@ -13,6 +15,8 @@ $(document).ready(function () {
         $(this).css('backgroundColor', 'transparent');
         $(this).find('a.nav-title').css('color', '#fff')
         $(this).find('.nav-line').css('backgroundColor', '#fff');
+        $(this).find('.top_contact_item_active').hide();
+        $(this).find('.top_contact_item_default').show();
     });
 
     // 子导航右侧垂直居中
@@ -38,11 +42,15 @@ $(document).ready(function () {
             $header.css('backgroundColor', 'transparent');
             $header.find('a.nav-title').css('color', '#fff')
             $header.find('.nav-line').css('backgroundColor', '#fff');
+            $header.find('.top_contact_item_active').hide();
+            $header.find('.top_contact_item_default').show();
         } else {
             $header.find('.logo img').attr('src', $header.find('img').data('active_url'));
             $header.css('backgroundColor', '#fff');
             $header.find('a.nav-title').css('color', '#333333')
             $header.find('.nav-line').css('backgroundColor', '#000');
+            $header.find('.top_contact_item_active').show();
+            $header.find('.top_contact_item_default').hide();
         }
     });
 

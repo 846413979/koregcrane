@@ -81,7 +81,6 @@
 
 .products-content .products-content-right .products-content-right-list-item {
     width: 350px;
-    height: 437px;
     margin-bottom: 20px;
     cursor: pointer;
     float: left;
@@ -95,8 +94,8 @@
 }
 
 .products-content .products-content-right .products-content-right-list-item .products-content-right-list-item-img img {
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     transition: all 0.3s;
 }
 
@@ -130,4 +129,53 @@
     margin: 60px auto 80px;
     display: flex;
     justify-content: center
+}
+
+
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .main-content .products-content .products-content-left{
+        width: 300px;
+    }
+    .product_industry .product_industry_list .product_industry_list_item{
+        width: 145px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    .products-content .products-content-right{
+        width: 780px;
+    }
+    .products-content .products-content-right .products-content-right-list-item{
+        width: 250px;
+        margin-left: 10px;
+    }
+    .products-content .products-content-right .products-content-right-list-item .products-content-right-list-item-img {
+        width: 250px;
+        height: 250px;
+    }
+    .products-content .products-content-right .products-content-right-list-item .products-content-right-list-item-title{
+        width: 250px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .main-content .products-content .products-content-left{
+        width: 200px;
+    }
+    .products-content .products-content-right{
+        width: 600px;
+    }
+    .products-content .products-content-right .products-content-right-list-item{
+        width: 195px;
+        margin-left: 5px;
+    }
+    .products-content .products-content-right .products-content-right-list-item .products-content-right-list-item-img {
+        width: 195px;
+        height: 195px;
+    }
+    .products-content .products-content-right .products-content-right-list-item .products-content-right-list-item-title{
+        width: 195px;
+        padding: 10px;
+        font-size: 14px;
+        height: 67px;
+    }
 }

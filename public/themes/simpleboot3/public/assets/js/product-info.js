@@ -416,7 +416,8 @@ $(document).ready(function () {
     // 热门产品
     $('.product-line ul li').click(function () {
         let index = $(this).index();
-        $('.related_products_list ul').animate({'marginLeft': -1440 * index + 'px'});
+        let w = $('.related_products_list').width();
+        $('.related_products_list ul').animate({'marginLeft': -w * index + 'px'});
         $(this).addClass('active').siblings().removeClass('active');
     })
 });

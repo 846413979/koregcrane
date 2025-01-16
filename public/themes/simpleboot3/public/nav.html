@@ -96,6 +96,31 @@
                 <li><a class="nav-title" href="{:cmf_url('portal/index/contact')}">CONTACT US</a></li>
             </ul>
         </div>
+        <div class="top-contact_warp">
+            <div class="top_contact">
+                <div class="top_contact_item top_contact_email" onclick="gtag_report_conversion('mailto:{$site_info.email}');">
+                    <img class="top_contact_item_default" src="/themes/simpleboot3/public/assets/images/email-white.png" alt="email" title="{$site_info.email}">
+                    <img class="top_contact_item_active" src="/themes/simpleboot3/public/assets/images/email-blue.png" alt="email" title="{$site_info.email}">
+                </div>
+                <php>
+                    $cleanNumber = preg_replace('/[^0-9]/', '', $site_info['whatsapp']);
+                    if (strpos($cleanNumber, '0') === 0) {
+                    $cleanNumber = preg_replace('/^0+/', '', $cleanNumber);
+                    }
+                </php>
+                <div class="top_contact_item top_contact_whatsapp" onclick="gtag_report_conversion('https://api.whatsapp.com/send?phone={$cleanNumber}');">
+                    <img class="top_contact_item_default" src="/themes/simpleboot3/public/assets/images/whatsapp-white.png" alt="whatsapp" title="{$site_info.whatsapp}">
+                    <img class="top_contact_item_active" src="/themes/simpleboot3/public/assets/images/whatsapp-blue.png" alt="whatsapp" title="{$site_info.whatsapp}">
+                </div>
+                <div class="top_contact_item top_contact_wechat">
+                    <img class="top_contact_item_default" src="/themes/simpleboot3/public/assets/images/wechat-white.png">
+                    <img class="top_contact_item_active" src="/themes/simpleboot3/public/assets/images/wechat-blue.png">
+                    <div class="wechat-img">
+                        <img src="{:cmf_get_image_url($site_info.weixin)}" alt="weixin" title="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!--NAV END-->

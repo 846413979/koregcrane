@@ -4,31 +4,6 @@
 
 }
 
-.hot-product .product-title {
-    width: 1440px;
-    margin: 80px auto 60px;
-}
-
-.hot-product .product-title .product-title-line {
-    width: 340px;
-    height: 1px;
-    background: #8E8E8E;
-    float: left;
-    margin-top: 25px;
-}
-
-.hot-product .product-title .product-title-text {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 42px;
-    color: #333333;
-    line-height: 51px;
-    font-style: normal;
-    text-transform: none;
-    float: left;
-    margin: 0 50px;
-}
-
 .product-content {
     width: 1440px;
     margin: 0 auto;
@@ -41,7 +16,6 @@
 
 .product-content ul li {
     width: 350px;
-    height: 437px;
     float: left;
     margin-left: 10px;
 }
@@ -57,8 +31,8 @@
 }
 
 .product-content ul li .product-content-li-img img {
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     transition: all 0.3s;
 }
 
@@ -67,7 +41,7 @@
 }
 
 .product-content ul li .product-content-li-title {
-    width: 350px;
+    width: 100%;
     height: 87px;
     padding: 20px;
     border: 1px solid #f1f1f1;
@@ -85,6 +59,36 @@
     background: #1562C5;
     color: #FFFFFF;
     border-color: #1562C5;
+}
+
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .product-content{
+        width: 1080px;
+    }
+    .product-content ul li{
+        width: 260px;
+    }
+    .product-content ul li .product-content-li-img{
+        width: 260px;
+        height: 260px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .product-content{
+        width: 800px;
+    }
+    .product-content ul li{
+        width: 190px;
+    }
+    .product-content ul li .product-content-li-img{
+        width: 190px;
+        height: 190px;
+    }
+    .product-content ul li .product-content-li-title{
+        padding: 10px;
+        font-size: 14px;
+    }
 }
 
 .product-line {
@@ -196,6 +200,40 @@
     background-color: rgba(21, 98, 197, 0.6);
 }
 
+@media only screen and (min-width: 1440px) and (max-width: 1660px) {
+    .innovation .innovation-list{
+        padding: 80px 40px;
+    }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1440px) {
+    .innovation .innovation-list{
+        padding: 60px 40px;
+    }
+    .innovation .innovation-list .innovation-list-desc{
+        margin-top: 30px;
+    }
+}
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+    .innovation .innovation-list{
+        padding: 20px;
+    }
+    .innovation .innovation-list .innovation-list-desc{
+        margin-top: 20px;
+    }
+}
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+    .innovation .innovation-list{
+        padding: 20px;
+    }
+    .innovation .innovation-list .innovation-list-desc{
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+
+
 .choose {
     width: 100%;
     height: 767px;
@@ -304,4 +342,64 @@
     padding-left: 12px;
     position: absolute;
     bottom: 0;
+}
+
+
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
+    .choose{
+        height: 667px;
+    }
+    .choose .choose-content{
+        width: 1080px;
+    }
+    .choose .choose-content .choose-content-left{
+        width: 500px;
+        height: 384px;
+        padding: 20px;
+    }
+    .choose .choose-content .choose-content-left .choose-left-title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .choose .choose-content .choose-content-left .choose-left-content{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .choose .choose-content .choose-content-right{
+        width: 580px;
+    }
+    .choose .choose-content .choose-content-right ul li{
+        width: 278px;
+        height: 186px;
+    }
+}
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+    .choose{
+        height: 600px;
+    }
+    .choose .choose-content{
+        width: 800px;
+    }
+    .choose .choose-content .choose-content-left{
+        width: 350px;
+        height: 300px;
+        padding: 5px;
+    }
+    .choose .choose-content .choose-content-left .choose-left-title{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .choose .choose-content .choose-content-left .choose-left-content{
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 10px;
+    }
+    .choose .choose-content .choose-content-right{
+        width: 450px;
+    }
+    .choose .choose-content .choose-content-right ul li{
+        width: 215px;
+        height: 144px;
+        margin-left: 10px;
+    }
 }

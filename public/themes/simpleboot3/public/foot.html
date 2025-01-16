@@ -100,13 +100,10 @@
 <!--FOOT END-->
 
 <div class="right_fix">
-    <php>
-        $cleanNumber = preg_replace('/[^0-9]/', '', $site_info['whatsapp']);
-        if (strpos($cleanNumber, '0') === 0) {
-        $cleanNumber = preg_replace('/^0+/', '', $cleanNumber);
-        }
-    </php>
     <div class="right_fix_connect">
+        <div class="right_fix_box right_fix_form">
+            <img src="__TMPL__/public/assets/images/floating-form-active.png" alt="form" title="form">
+        </div>
         <div class="right_fix_box right_fix_whatsapp">
             <img src="__TMPL__/public/assets/images/whatsapp.png" alt="whatsapp" title="whatsapp">
             <div class="right_fix_box_connect">
