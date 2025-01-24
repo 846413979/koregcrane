@@ -66,12 +66,44 @@
             </div>
             <div class="footer-feedback-line"></div>
             <div class="footer-feedback-item">
+                TEL:
+                <input type="text" name="footer-tel" value="" placeholder="Please Enter">
+            </div>
+            <div class="footer-feedback-line"></div>
+            <div class="footer-feedback-item">
                 MESSAGE:
                 <input type="text" name="footer-message" value="" placeholder="Please Enter">
                 <a href="{:cmf_url('portal/index/contact')}" ><img src="__TMPL__/public/assets/images/gt.webp" alt="gt"></a>
             </div>
             <div class="footer-feedback-line"></div>
             <button class="footer-feedback-btn">Submit Your Request</button>
+        </div>
+    </div>
+
+    <div class="right_fix">
+        <div class="right_fix_connect">
+            <div class="right_fix_box right_fix_form">
+                <img src="__TMPL__/public/assets/images/floating-form.png" alt="form" title="form">
+                <p class="right_fix_box_title">Message</p>
+            </div>
+            <div class="right_fix_box right_fix_whatsapp">
+                <a onclick="gtag_report_conversion('https://api.whatsapp.com/send?phone={$cleanNumber}');">
+                    <img src="__TMPL__/public/assets/images/floating-whatsapp.png" alt="whatsapp" title="whatsapp">
+                    <p class="right_fix_box_title">WhatsApp</p>
+                </a>
+            </div>
+            <div class="right_fix_box right_fix_email">
+                <a onclick="gtag_report_conversion('mailto:{$site_info.email}');">
+                    <img src="__TMPL__/public/assets/images/floating-email.png" alt="email" title="email">
+                    <p class="right_fix_box_title">Send Email</p>
+                </a>
+            </div>
+            <div class="right_fix_box right_fix_wechat">
+                <a onclick="gtag_report_conversion('tel:{$site_info.sale_tel}');">
+                    <img src="__TMPL__/public/assets/images/floating-phone.png" alt="sale_tel" title="sale_tel">
+                    <p class="right_fix_box_title">Sale Tel</p>
+                </a>
+            </div>
         </div>
     </div>
 </div>

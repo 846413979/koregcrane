@@ -65,14 +65,16 @@ $(document).ready(function () {
     $('.footer-feedback-btn').click(function () {
         let name = $('input[name=footer-name]').val();
         let email = $('input[name=footer-email]').val();
+        let tel = $('input[name=footer-tel]').val();
         let message = $('input[name=footer-message]').val();
-        if (name == '' || email == '' || message == '') {
+        if (name == '' || email == '' || tel == '' || message == '') {
             alert('Please fill in the complete information')
             return;
         }
         let data = {
             name: name,
             email: email,
+            phone: tel,
             content: message,
             type: 2,
         }
